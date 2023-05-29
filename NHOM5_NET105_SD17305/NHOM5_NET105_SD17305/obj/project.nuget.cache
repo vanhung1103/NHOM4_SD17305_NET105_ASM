@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0F3IDnXmCQA+IVV1RD1jINSWUQws+0w+rWJRKxFcxiFLdZMXHFlYf3szKNiUk5u2jWXWyRUQrwRXS/ClHR2LhA==",
+  "dgSpecHash": "OmvAbceJtjqzQ8FJXiK70i7X2zGIv1JmyVqcJC48Heo0riyD+S2yyt7UP0pzFbenCfXQABa+nPkvm+4VkradEA==",
   "success": true,
-  "projectFilePath": "D:\\c#5\\github\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj",
+  "projectFilePath": "D:\\c#5\\GITTT\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vanhu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\vanhu\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

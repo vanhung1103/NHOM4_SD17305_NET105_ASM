@@ -14,7 +14,7 @@ namespace NHOM5_NET105_SD17305.Models
         public string email { get; set; } 
         public string Image { get; set; } 
    
-        public ICollection<User> users { get; set; }
+        public User users { get; set; }
         public ICollection<Address> addresses { get;}
     }
 }
