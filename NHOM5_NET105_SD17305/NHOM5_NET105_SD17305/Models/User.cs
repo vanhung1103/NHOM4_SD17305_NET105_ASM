@@ -10,7 +10,7 @@ namespace NHOM5_NET105_SD17305.Models
         [ForeignKey("RoleId")]
         public int RoleId { get; set; }
         public string UserName { get; set; }
-        public string Passworf { get; set; }
+        public string Password { get; set; }
         public Role Role { get; set; }
         public ICollection<External_Login> external_Logins { get; set; }
         public Customer customers { get; set; }
