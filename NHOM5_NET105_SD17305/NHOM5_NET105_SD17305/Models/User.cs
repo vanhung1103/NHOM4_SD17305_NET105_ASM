@@ -13,7 +13,7 @@ namespace NHOM5_NET105_SD17305.Models
         public string Passworf { get; set; }
         public Role Role { get; set; }
         public ICollection<External_Login> external_Logins { get; set; }
-        public ICollection<Customer> customers { get; set; }
+        public Customer customers { get; set; }
         public ICollection<Bill> Bills { get; set; }
         public ICollection<Cart> carts { get; set; }
 

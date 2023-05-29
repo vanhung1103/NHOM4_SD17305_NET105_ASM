@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\c#5\\github\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj": {}
+    "D:\\c#5\\GITTT\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj": {}
   },
   "projects": {
-    "D:\\c#5\\github\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj": {
+    "D:\\c#5\\GITTT\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\c#5\\github\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj",
+        "projectUniqueName": "D:\\c#5\\GITTT\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj",
         "projectName": "NHOM5_NET105_SD17305",
-        "projectPath": "D:\\c#5\\github\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj",
+        "projectPath": "D:\\c#5\\GITTT\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.csproj",
         "packagesPath": "C:\\Users\\vanhu\\.nuget\\packages\\",
-        "outputPath": "D:\\c#5\\github\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\obj\\",
+        "outputPath": "D:\\c#5\\GITTT\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vanhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
