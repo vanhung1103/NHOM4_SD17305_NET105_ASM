@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NHOM5_NET105_SD17305.Data;
+using NHOM5_NET105_SD17305.Data.Data;
 
 #nullable disable
 
-namespace NHOM5_NET105_SD17305.Migrations
+namespace NHOM5_NET105_SD17305.Views.Migrations
 {
     [DbContext(typeof(FastFoodDbContext))]
     partial class FastFoodDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,221 @@ namespace NHOM5_NET105_SD17305.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Address", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1306817d-ed92-4164-a935-b5d4cb4beac5",
+                            ConcurrencyStamp = "c543cb74-6bc5-43e2-9c34-16b16347c0b0",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "d5e4febc-ae7b-438f-8e4e-7613c5b02628",
+                            ConcurrencyStamp = "6ad0f583-3696-425f-b833-8ab636db859d",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,8 +248,9 @@ namespace NHOM5_NET105_SD17305.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("CustomerUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("State")
                         .IsRequired()
@@ -45,17 +260,18 @@ namespace NHOM5_NET105_SD17305.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerUserId");
 
-                    b.ToTable("addresses");
+                    b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Bill", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Bill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,8 +325,9 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Property<int>("TotalAmount")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -120,10 +337,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("bills");
+                    b.ToTable("Bills");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.BillItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.BillItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -137,13 +354,13 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Property<int>("BillsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CombosId")
+                    b.Property<int?>("CombosId")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -157,10 +374,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("billItems");
+                    b.ToTable("BillItems");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.BillStatus", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.BillStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -174,10 +391,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("billStatuses");
+                    b.ToTable("BillStatuses");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Cart", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -188,17 +405,18 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Property<int>("Description")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("carts");
+                    b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.CartItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.CartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -209,13 +427,13 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Property<int>("CartId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CombosId")
+                    b.Property<int?>("CombosId")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -229,10 +447,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("cartItems");
+                    b.ToTable("CartItems");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Category", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -250,10 +468,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Combos", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Combos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -276,19 +494,19 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Property<double>("Discount")
                         .HasColumnType("float");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("longDescription")
+                    b.Property<string>("LongDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("combos");
+                    b.ToTable("Combos");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.CombosItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.CombosItem", b =>
                 {
                     b.Property<int>("CombosItemId")
                         .ValueGeneratedOnAdd()
@@ -311,13 +529,13 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("combositems");
+                    b.ToTable("CombosItems");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Customer", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Customer", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("datetime2");
@@ -348,39 +566,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("customers");
+                    b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.External_Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ProviderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProviderKey")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Provider_LoginId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Provider_LoginId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("external_Logins");
-                });
-
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Payment_Type", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Payment_Type", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -394,10 +583,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("payment_Types");
+                    b.ToTable("Payment_Types");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Product", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -438,10 +627,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasIndex("Cate_Id");
 
-                    b.ToTable("products");
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Promotion", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Promotion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -460,10 +649,10 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("promotions");
+                    b.ToTable("Promotions");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.PromotionItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.PromotionItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -491,73 +680,64 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.HasIndex("PromotionId");
 
-                    b.ToTable("promotionItems");
+                    b.ToTable("PromotionItems");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Provider_Login", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ProviderName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("provider_Logins");
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Role", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("RoleName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("roles");
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.User", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Passworf")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("users");
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Address", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Customer", "Customer")
-                        .WithMany("addresses")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Address", b =>
+                {
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Customer", "Customer")
+                        .WithMany("Addresses")
                         .HasForeignKey("CustomerUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -565,22 +745,22 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Bill", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Bill", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.BillStatus", "BillStatus")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.BillStatus", "BillStatus")
                         .WithMany("Bills")
                         .HasForeignKey("BillStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Payment_Type", "Payment_Type")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Payment_Type", "Payment_Type")
                         .WithMany("bills")
                         .HasForeignKey("Payment_TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.User", "User")
-                        .WithMany("Bills")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -592,25 +772,21 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.BillItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.BillItem", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Bill", "Bills")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Bill", "Bills")
                         .WithMany("BillItem")
                         .HasForeignKey("BillsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Combos", "Combos")
-                        .WithMany("billItems")
-                        .HasForeignKey("CombosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Combos", "Combos")
+                        .WithMany("BillItems")
+                        .HasForeignKey("CombosId");
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Product", "Product")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Product", "Product")
                         .WithMany("billItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Bills");
 
@@ -619,10 +795,10 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Cart", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Cart", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.User", "User")
-                        .WithMany("carts")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -630,25 +806,21 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.CartItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.CartItem", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Cart", "Cart")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Cart", "Cart")
                         .WithMany("Items")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Combos", "Combos")
-                        .WithMany("cartItems")
-                        .HasForeignKey("CombosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Combos", "Combos")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CombosId");
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Product", "Product")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Product", "Product")
                         .WithMany("cartItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Cart");
 
@@ -657,15 +829,15 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.CombosItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.CombosItem", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Combos", "Combos")
-                        .WithMany("combositem")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Combos", "Combos")
+                        .WithMany("CombosItems")
                         .HasForeignKey("CombosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Product", "product")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Product", "Product")
                         .WithMany("CombosItem")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -673,42 +845,23 @@ namespace NHOM5_NET105_SD17305.Migrations
 
                     b.Navigation("Combos");
 
-                    b.Navigation("product");
+                    b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Customer", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Customer", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.User", "users")
-                        .WithOne("customers")
-                        .HasForeignKey("NHOM5_NET105_SD17305.Models.Customer", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("users");
-                });
-
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.External_Login", b =>
-                {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Provider_Login", "Provider_Login")
-                        .WithMany("ExternalLogin")
-                        .HasForeignKey("Provider_LoginId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NHOM5_NET105_SD17305.Models.User", "User")
-                        .WithMany("external_Logins")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Users")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Provider_Login");
-
-                    b.Navigation("User");
+                    b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Product", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Product", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Category", "Category")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("Cate_Id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -717,15 +870,15 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.PromotionItem", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.PromotionItem", b =>
                 {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Product", "Product")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Product", "Product")
                         .WithMany("promotionItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Promotion", "Promotion")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.Promotion", "Promotion")
                         .WithMany("promotionItems")
                         .HasForeignKey("PromotionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -736,57 +889,46 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("Promotion");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.User", b =>
-                {
-                    b.HasOne("NHOM5_NET105_SD17305.Models.Role", "Role")
-                        .WithMany("users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Bill", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Bill", b =>
                 {
                     b.Navigation("BillItem");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.BillStatus", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.BillStatus", b =>
                 {
                     b.Navigation("Bills");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Cart", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Cart", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Category", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Combos", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Combos", b =>
                 {
-                    b.Navigation("billItems");
+                    b.Navigation("BillItems");
 
-                    b.Navigation("cartItems");
+                    b.Navigation("CartItems");
 
-                    b.Navigation("combositem");
+                    b.Navigation("CombosItems");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Customer", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Customer", b =>
                 {
-                    b.Navigation("addresses");
+                    b.Navigation("Addresses");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Payment_Type", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Payment_Type", b =>
                 {
                     b.Navigation("bills");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Product", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Product", b =>
                 {
                     b.Navigation("CombosItem");
 
@@ -797,31 +939,9 @@ namespace NHOM5_NET105_SD17305.Migrations
                     b.Navigation("promotionItems");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Promotion", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Promotion", b =>
                 {
                     b.Navigation("promotionItems");
-                });
-
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Provider_Login", b =>
-                {
-                    b.Navigation("ExternalLogin");
-                });
-
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.Role", b =>
-                {
-                    b.Navigation("users");
-                });
-
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Models.User", b =>
-                {
-                    b.Navigation("Bills");
-
-                    b.Navigation("carts");
-
-                    b.Navigation("customers")
-                        .IsRequired();
-
-                    b.Navigation("external_Logins");
                 });
 #pragma warning restore 612, 618
         }
