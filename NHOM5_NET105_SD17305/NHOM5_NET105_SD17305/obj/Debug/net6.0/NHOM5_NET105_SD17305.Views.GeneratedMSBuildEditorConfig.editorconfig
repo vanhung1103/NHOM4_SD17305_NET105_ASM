@@ -9,77 +9,85 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NHOM5_NET105_SD17305.Views
 build_property.RootNamespace = NHOM5_NET105_SD17305.Views
-build_property.ProjectDir = C:\Users\Trung2701\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\
+build_property.ProjectDir = C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Trung2701\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Home/Index.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Combos/CreateCombo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9zXENyZWF0ZUNvbWJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Combos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/Error.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/Shared/Error.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/_ViewImports.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/_ViewStart.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Guest/Home.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Guest/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Vlc3RcSG9tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Shared/Error.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/_ViewImports.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/_ViewStart.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-3ntzh6ugae
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/Shared/_LayoutCustomer.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Customer/Views/Shared/_LayoutCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXF9MYXlvdXRDdXN0b21lci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-pdlkm8tr60
 
-[C:/Users/Trung2701/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Shared/_Layout.cshtml]
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-g2q639syub
