@@ -7,7 +7,7 @@ using NHOM5_NET105_SD17305.Data.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddDbContext<FastFoodDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("FastFood"), c => c.MigrationsAssembly("NHOM5_NET105_SD17305.Views"));
@@ -17,11 +17,16 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<FastFoodDbContext>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<ICombosServices, CombosServices>();
+builder.Services.AddScoped<CombosServices>();
+
+builder.Services.AddScoped<IProductServices, ProductServices>();
+builder.Services.AddScoped<ProductServices>();
 builder.Services.AddHttpClient();
 // add session
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.IdleTimeout = TimeSpan.FromMinutes(1);
 });
 //add httpcontextaccessor
 builder.Services.AddHttpContextAccessor();
