@@ -22,6 +22,9 @@ builder.Services.AddScoped<CombosServices>();
 
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<ProductServices>();
+
+builder.Services.AddScoped<ICombosItemServices, CombosItemServices>();
+builder.Services.AddScoped<CombosItemServices>();
 builder.Services.AddHttpClient();
 // add session
 builder.Services.AddSession(options =>
