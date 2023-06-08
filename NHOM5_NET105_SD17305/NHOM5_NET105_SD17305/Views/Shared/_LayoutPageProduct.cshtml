@@ -60,13 +60,13 @@
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="widgets-wrap float-md-right">
                                 <div class="widget-header mr-3">
-                                    <a href="#" class="nav-link " >
-                                       Login
+                                    <a href="#" class="nav-link ">
+                                        Login
                                     </a>
                                 </div>
                                 <div class="widget-header mr-3">
-                                    <a href="#" class="nav-link " >
-                                       Resign
+                                    <a href="#" class="nav-link ">
+                                        Resign
                                     </a>
                                 </div>
 
@@ -78,16 +78,16 @@
             <nav class="navbar navbar-main navbar-expand pl-0">
                 <ul class="navbar-nav flex-wrap">
                     <li class="nav-item">
-                        <a class="nav-link"  asp-controller="Guest" asp-action="Home">Trang chủ</a>
+                        <a class="nav-link" asp-controller="Guest" asp-action="Home">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  asp-controller="Guest" asp-action="Home">Giới thiệu</a>
+                        <a class="nav-link" asp-controller="Guest" asp-action="Home">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  asp-controller="Guest" asp-action="Home">Sản phẩm</a>
+                        <a class="nav-link" asp-controller="Guest" asp-action="Home">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin"  asp-controller="Combos" asp-action="Index">Contact</a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="Combos" asp-action="Index">Contact</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -108,6 +108,10 @@
 
     <div class="container">
         <main role="main" class="pb-3">
+            <div style="text-align:center"> 
+                @Html.ActionLink("Fast Food","ShowListFastFood","Product",null,new {@class= "btn btn-outline-success"})
+                @Html.ActionLink("Combos Food","ShowListCombosFood","Product",null,new {@class= "btn btn-outline-success"})
+            </div>
             @RenderBody()
         </main>
     </div>
