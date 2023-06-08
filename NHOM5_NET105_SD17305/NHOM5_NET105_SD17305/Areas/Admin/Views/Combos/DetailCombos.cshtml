@@ -1,0 +1,189 @@
+﻿@using NHOM5_NET105_SD17305.Data.Models;
+@model NHOM5_NET105_SD17305.Data.Models.Combos
+@{
+
+	var products = ViewBag.productss;
+	List<CombosItem> combosItems = ViewBag.combos;
+	List<Product> allProduct = ViewBag.allproduct;
+}
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-body px-0 pt-0 pb-2">
+				<div class="table-responsive p-0">
+					<table class="table align-items-center mb-0">
+						<thead>
+							<tr>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Combo Name</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Giá Combo</th>
+								<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giảm giá</th>
+								<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số lượng</th>
+								<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mô tả</th>
+
+								<th class="text-secondary opacity-7"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="d-flex px-2 py-1">
+										<div>
+											<img src="https://garankuccu.com/upload/product/b/d/2/combo-4-jpg.jpg" class="avatar avatar-sm me-3" alt="user1">
+										</div>
+										<div class="d-flex flex-column justify-content-center">
+											<h6 class="mb-0 text-sm">@Model.CombosName</h6>
+										</div>
+									</div>
+								</td>
+								<td>
+									<p class="text-xs font-weight-bold mb-0">@Model.CombosPrice</p>
+
+								</td>
+								<td class="align-middle text-center text-sm">
+									<p class="text-xs font-weight-bold mb-0">@Model.Discount</p>
+								</td>
+								<td class="align-middle text-center">
+									<p class="text-xs font-weight-bold mb-0">@Model.Quantity</p>
+								</td>
+								<td class="align-middle text-center">
+									<p class="text-xs font-weight-bold mb-0">@Model.Description</p>
+								</td>
+
+								<td class="align-middle">
+									@Html.ActionLink("Edit","UpdateCombo","Combos", new {id = Model.Id, area = "Admin"},new { @class = "btn btn-outline-primary" })
+								</td>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-header pb-0">
+				<h6>Sản phẩm trong combo</h6>
+			</div>
+			<div class="card-body px-0 pt-0 pb-2">
+				<div class="table-responsive p-0">
+					<table class="table align-items-center justify-content-center mb-0">
+						<thead>
+							<tr>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sản Phẩm</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<div class="row">
+											<form method="post" asp-area="Admin" asp-controller="Combos" asp-action="Updatequantity">
+								@{
+									foreach (var item in combosItems)
+									{
+										var product = allProduct.FirstOrDefault(c => c.Id == item.ProductId);
+
+
+										<div class="col-md-3">
+											<div class="thumbnail">
+												<a>
+													<img src=@product.Image alt="Nature" style="width:100%">
+													<div class="row caption" style="">
+														<div class="col-6">@product.ProductName</div>
+														<div class="col-6">$@product.Price</div>
+														<div class="col-8">
+															<div class="form-group">
+																<input style="width:80px" class="form-control" type="number" min="1" max="100" name="quantity" value="@item.Quantity">
+															</div>
+														</div>
+														<div class="col-4">
+															<div class="form-group">
+																<input type="hidden" name="idsp" value="@item.ProductId" />
+															
+																<input type="submit" value="Save" class="btn btn-primary" />
+															</div>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+									}
+								}
+							</form>
+							</div>
+						</tbody>
+						@*						//
+						<td class="align-middle">
+
+						//		@Html.ActionLink("Xoa","DeleteComboidsp","Combos", new {idSp = item.ProductId, area = "Admin"},new { @class = "btn btn-outline-primary" })
+						//
+						</td>
+						//</tr>*@
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-header pb-0">
+				<h6>Danh sách sản phẩm chưa thêm vào combo</h6>
+			</div>
+			<div class="card-body px-0 pt-0 pb-2">
+				<div class="table-responsive p-0">
+					<table class="table align-items-center justify-content-center mb-0">
+						<thead>
+							<tr>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sản Phẩm</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Loại sản phẩm</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Giá</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Số lượng</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@{
+								foreach (var item in products)
+								{
+									<tr>
+										<td>
+											<div class="d-flex px-2">
+												<div>
+													<img src=@item.Image class="avatar avatar-sm rounded-circle me-2" alt="xd">
+												</div>
+												<div class="my-auto">
+													<h6 class="mb-0 text-sm">@item.ProductName</h6>
+												</div>
+											</div>
+										</td>
+										<td>
+											<p class="text-sm font-weight-bold mb-0">$@item.Cate_Id</p>
+										</td>
+										<td>
+											<p class="text-sm font-weight-bold mb-0">@item.Price</p>
+										</td>
+										<td>
+											<p class="text-sm font-weight-bold mb-0">@item.Quantity</p>
+										</td>
+										<td class="align-middle">
+
+											@Html.ActionLink("Add","AddProductToComboItem","Combos", new {idSp = item.Id, area = "Admin"},new { @class = "btn btn-outline-primary" })
+										</td>
+									</tr>
+								}
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -3,13 +3,13 @@
 @{
     List<Product> products = ViewBag.products;
 }
-<div class="row">
+<div class="row container">
     <div class="col-12">
         <h3 style="text-align:center;margin-bottom:50px"> 
             Combo
         </h3>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-12">
         <form asp-area="Admin" asp-controller="Combos" asp-action="CreateCombo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -48,7 +48,11 @@
         </form>
     </div>
 
-    <div class="col-7">
+@*    <div class="col-7">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4">Thêm sản phẩm</div>
+        </div>
         <table class="table align-items-center mb-0">
             <thead>
                 <tr>
@@ -84,7 +88,7 @@
                             </td>
                             <td class="align-middle">
                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                    Thêm
+                                    Xóa
                                 </a>
                             </td>
                         </tr>
@@ -92,5 +96,5 @@
                 }
             </tbody>
         </table>
-    </div>
+    </div>*@
 </div>
