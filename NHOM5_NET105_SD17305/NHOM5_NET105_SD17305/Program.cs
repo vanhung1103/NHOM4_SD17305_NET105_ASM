@@ -16,10 +16,11 @@ builder.Services.AddDbContext<FastFoodDbContext>(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<FastFoodDbContext>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IProductServices, ProductServices>();
+builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<ICombosServices, CombosServices>();
 builder.Services.AddScoped<CombosServices>();
-
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<ProductServices>();
 builder.Services.AddHttpClient();
@@ -54,6 +55,6 @@ app.UseEndpoints(endpoints =>
     );
     endpoints.MapControllerRoute(
    name: "default",
-    pattern: "{controller=Guest}/{action=Home}/{id?}");
+    pattern: "{controller=Guest}/{action=ListProduct}/{id?}");
 });
 app.Run();
