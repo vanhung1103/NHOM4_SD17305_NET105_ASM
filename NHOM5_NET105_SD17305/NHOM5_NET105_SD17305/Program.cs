@@ -21,6 +21,8 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<ICombosServices, CombosServices>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
+builder.Services.AddScoped<IPromotionServices, Promotionservices>();
+builder.Services.AddScoped<IPromotionItemServices, PromotionItemservices>();
 builder.Services.AddScoped<CombosServices>();
 
 builder.Services.AddScoped<IProductServices, ProductServices>();
