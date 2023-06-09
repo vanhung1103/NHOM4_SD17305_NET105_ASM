@@ -5,12 +5,12 @@
 }
 <div class="row container">
     <div class="col-12">
-        <h3 style="text-align:center;margin-bottom:50px"> 
+        <h3 style="text-align:center;margin-bottom:50px">
             Combo
         </h3>
     </div>
     <div class="col-md-12">
-        <form asp-area="Admin" asp-controller="Combos" asp-action="CreateCombo">
+        <form asp-area="Admin" asp-controller="Combos" asp-action="CreateCombo" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label class="control-label">Tên Combo</label>
@@ -18,12 +18,17 @@
                 <span asp-validation-for="CombosName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label">Ảnh</label>
+                <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label class="control-label">Giá</label>
                 <input asp-for="CombosPrice" class=" form-control" />
                 <span asp-validation-for="CombosPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label  class="control-label">Giảm Giá</label>
+                <label class="control-label">Giảm Giá</label>
                 <input asp-for="Discount" class="form-control" />
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
@@ -38,7 +43,7 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label  class="control-label">Mô tả chi tiết</label>
+                <label class="control-label">Mô tả chi tiết</label>
                 <input asp-for="LongDescription" class="form-control" />
                 <span asp-validation-for="LongDescription" class="text-danger"></span>
             </div>
@@ -48,53 +53,4 @@
         </form>
     </div>
 
-@*    <div class="col-7">
-        <div class="row">
-            <div class="col-8"></div>
-            <div class="col-4">Thêm sản phẩm</div>
-        </div>
-        <table class="table align-items-center mb-0">
-            <thead>
-                <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sản phẩm</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Giá</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số lượng</th>
-                    <th class="text-secondary opacity-7"></th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                @{
-                    foreach (var item in products)
-                        {
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="@item.Image" class="avatar avatar-sm me-3" alt="user1">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">@item.ProductName</h6>
-
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0">@item.Price</p>
-
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-xs font-weight-bold mb-0">@item.Quantity</p>
-                            </td>
-                            <td class="align-middle">
-                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                    Xóa
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-    </div>*@
 </div>
