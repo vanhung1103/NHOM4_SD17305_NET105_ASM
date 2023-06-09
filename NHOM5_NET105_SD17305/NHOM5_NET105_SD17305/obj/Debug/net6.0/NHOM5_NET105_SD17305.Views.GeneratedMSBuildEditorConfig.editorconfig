@@ -36,8 +36,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Trung2701/Source/Repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Promotion/CreatePromotion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW90aW9uXENyZWF0ZVByb21vdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Trung2701/Source/Repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Promotion/EditPromotion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW90aW9uXEVkaXRQcm9tb3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Trung2701/Source/Repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Promotion/ShowListProductToAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW90aW9uXFNob3dMaXN0UHJvZHVjdFRvQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Trung2701/Source/Repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Promotion/ShowListPromotion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW90aW9uXFNob3dMaXN0UHJvbW90aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Trung2701/Source/Repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Promotion/ShowListPromotionItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW90aW9uXFNob3dMaXN0UHJvbW90aW9uSXRlbXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Trung2701/Source/Repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/Error.cshtml]
