@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CuUf7gQFL1eZBx4ob3a2HF+0pBtlsUQM9sr9pqBO9RZdjQq/PNLOGJG7SgwpWamVl4B8JcflmyOX8KDe1uIAew==",
+  "dgSpecHash": "DlyNznN7mOJkfLFYEjApRT6M1eWyR9g3aszUh1jwbCtHefXQce4OYcziizIyyv9kdyWUAXqpgvA6jlQYPVczOA==",
   "success": true,
   "projectFilePath": "C:\\Users\\dinht\\source\\repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\dinht\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dinht\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\dinht\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

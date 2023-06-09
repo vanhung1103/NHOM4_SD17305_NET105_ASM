@@ -864,3 +864,6 @@ C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_
 C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\bin\Debug\net6.0\NHOM5_NET105_SD17305.API.staticwebassets.runtime.json
+C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.Views.dll
+C:\Users\dinht\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.dll

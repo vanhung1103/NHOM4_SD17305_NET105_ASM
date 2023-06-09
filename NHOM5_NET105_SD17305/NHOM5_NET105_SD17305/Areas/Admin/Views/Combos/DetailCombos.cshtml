@@ -78,40 +78,37 @@
 						</thead>
 						<tbody>
 							<div class="row">
-											<form method="post" asp-area="Admin" asp-controller="Combos" asp-action="Updatequantity">
-								@{
-									foreach (var item in combosItems)
-									{
-										var product = allProduct.FirstOrDefault(c => c.Id == item.ProductId);
+								<form>
+										@foreach (var item in combosItems)
+										{
+											var product = allProduct.FirstOrDefault(c => c.Id == item.ProductId);
+											<div class="col-md-3">
+												<div class="thumbnail">
+													<a> 
+														<img src=@product.Image alt="Nature" style="width:100%">
+														<div class="row caption" style="">
+															<div class="col-6">@product.ProductName</div>
+															<div class="col-6">$@product.Price</div>
+															<div class="col-8">
+																<div class="form-group">
+																	<input style="width:80px" class="form-control" type="number" min="1" max="100" name="quantity" value="@item.Quantity">
+																	<input type="text" hidden name="idsp" value="@item.ProductId" />
+																</div>
+															</div>
+															<div class="col-4">
+																<div class="form-group">
 
 
-										<div class="col-md-3">
-											<div class="thumbnail">
-												<a>
-													<img src=@product.Image alt="Nature" style="width:100%">
-													<div class="row caption" style="">
-														<div class="col-6">@product.ProductName</div>
-														<div class="col-6">$@product.Price</div>
-														<div class="col-8">
-															<div class="form-group">
-																<input style="width:80px" class="form-control" type="number" min="1" max="100" name="quantity" value="@item.Quantity">
+																<input type="submit" value="Save" formaction="@Url.Action("Updatequantity", "Combos","Admin")" formmethod="post" class="btn btn-outline-primary" />
+																</div>
 															</div>
 														</div>
-														<div class="col-4">
-															<div class="form-group">
-																<input type="hidden" name="idsp" value="@item.ProductId" />
-															
-																<input type="submit" value="Save" class="btn btn-primary" />
-															</div>
-														</div>
-													</div>
-												</a>
+													</a>
+												</div>
 											</div>
-										</div>
-									}
-								}
-							</form>
-							</div>
+										}
+								</form>
+							</div> 
 						</tbody>
 						@*						//
 						<td class="align-middle">

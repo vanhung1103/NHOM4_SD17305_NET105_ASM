@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QN78Pipc53aOe3Yvn9q6uvwYFhcvuQN3JFAJBcMXWWuXlRiyCHRjz0ObXn8dWEobfRQsBLNC5h0N+CXv53JpLA==",
+  "dgSpecHash": "Dx+9A+16OlSmtpNbTVy5EvzEFtGQxXFqxNeWo2vkbGMaOvAwLaxqXwW+XW4EPw7j5hkkYIDVC8isyGyLfGuAbg==",
   "success": true,
   "projectFilePath": "C:\\Users\\dinht\\source\\repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Views.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\dinht\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dinht\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\dinht\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
