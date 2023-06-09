@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NHOM5_NET105_SD17305.Data.Data;
 
@@ -11,9 +12,10 @@ using NHOM5_NET105_SD17305.Data.Data;
 namespace NHOM5_NET105_SD17305.Views.Migrations
 {
     [DbContext(typeof(FastFoodDbContext))]
-    partial class FastFoodDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230609183843_updatepromotionname")]
+    partial class updatepromotionname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
