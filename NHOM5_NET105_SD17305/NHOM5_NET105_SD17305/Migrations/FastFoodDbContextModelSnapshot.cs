@@ -51,15 +51,15 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a18dbd66-fb08-40c2-86c6-457364d93a5e",
-                            ConcurrencyStamp = "c580befb-16cc-45fb-b5dd-7e8aac7bf93e",
+                            Id = "3e5d0d9f-83ff-4525-9f8f-3cd8c9227e37",
+                            ConcurrencyStamp = "386fc869-cae0-404f-8758-d7433141d4fb",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a78c9e7c-fb03-42e0-a391-d23ffe639e2b",
-                            ConcurrencyStamp = "a44ccb79-55e4-4eee-9d58-7ca0249f77f8",
+                            Id = "ae096b35-114e-474e-b83b-985100210516",
+                            ConcurrencyStamp = "9d3dee79-b866-4fe2-b3c1-228050f8cbcb",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -647,6 +647,13 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<DateTime>("End_Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("PromoCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PromoValue")
+                        .HasColumnType("int");
+
                     b.Property<int>("PromotionName")
                         .HasColumnType("int");
 
@@ -665,14 +672,6 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
-
-                    b.Property<string>("PromoCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PromoValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PromotionId")
                         .HasColumnType("int");

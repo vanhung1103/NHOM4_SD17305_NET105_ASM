@@ -790,3 +790,6 @@ C:\Users\Trung2701\source\repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NH
 C:\Users\dinht\Source\Repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\NHOM5_NET105_SD17305.API.staticwebassets.runtime.json
 C:\Users\dinht\Source\Repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.Views.dll
 C:\Users\dinht\Source\Repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.dll
+C:\Users\Trung2701\Source\Repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\NHOM5_NET105_SD17305.API.staticwebassets.runtime.json
+C:\Users\Trung2701\Source\Repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.Views.dll
+C:\Users\Trung2701\Source\Repos\NHOM5_SD17305_NET105_ASM\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.dll

@@ -1,5 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@*@model IEnumerable<NHOM5_NET105_SD17305.Data.Models.Promotion>
+
+<table class="table align-items-center mb-0">
+    <thead>
+        <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.PromotionName)</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.Create_Date.ToShortTimeString())</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.End_Date.ToShortTimeString())</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Control</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">John Michael</h6>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p class="text-xs font-weight-bold mb-0">Manager</p>
+                <p class="text-xs text-secondary mb-0">Organization</p>
+            </td>
+            <td class="align-middle text-center text-sm">
+                <span class="badge badge-sm bg-gradient-success">Online</span>
+            </td>
+            <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+            </td>
+            <td class="align-middle">
+                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                    Edit
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>*@
