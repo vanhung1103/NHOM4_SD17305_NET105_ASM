@@ -3963,11 +3963,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dinht\\source\\repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
+      "projectUniqueName": "C:\\Users\\dinht\\OneDrive\\Máy tính\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
       "projectName": "NHOM5_NET105_SD17305.API",
-      "projectPath": "C:\\Users\\dinht\\source\\repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
+      "projectPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
       "packagesPath": "C:\\Users\\dinht\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dinht\\source\\repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\obj\\",
+      "outputPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3988,8 +3988,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\dinht\\source\\repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
-              "projectPath": "C:\\Users\\dinht\\source\\repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj"
+            "C:\\Users\\dinht\\OneDrive\\Máy tính\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
+              "projectPath": "C:\\Users\\dinht\\OneDrive\\Máy tính\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj"
             }
           }
         }
