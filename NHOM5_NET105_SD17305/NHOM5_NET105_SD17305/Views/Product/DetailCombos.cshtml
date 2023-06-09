@@ -1,0 +1,142 @@
+﻿@using NHOM5_NET105_SD17305.Data.Models;
+@model NHOM5_NET105_SD17305.Data.Models.Combos
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg-white padding-y">
+    <div class="container">
+        <!-- ============================ ITEM DETAIL ======================== -->
+        <div class="row">
+            <aside class="col-md-6">
+                <div class="card">
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap">
+                            <div> <a href="#"><img src="https://picsum.photos/200/300"></a></div>
+                        </div> <!-- slider-product.// -->
+                    </article> <!-- gallery-wrap .end// -->
+                </div> <!-- card.// -->
+            </aside>
+            <main class="col-md-6">
+                <article class="product-info-aside">
+                    <h2 class="title mt-3">@Model.CombosName </h2>
+                    <div class="rating-wrap my-3">
+                        <small class="label-rating text-success">
+                            <i class="fa fa-clipboard-check"></i> 154 orders
+                        </small>
+                    </div> <!-- rating-wrap.// -->
+                    <div class="mb-3">
+                        <var class="price h4"> @Model.CombosPrice đ</var>
+                    </div> <!-- price-detail-wrap .// -->
+                    @{
+                        List<Product> products = ViewBag.ProductInCombos;
+                    }
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Weight
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+                                    <th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in products)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="https://picsum.photos/200/300" width="40px" height="40px" style="border-radius:5px">
+                                        </td>
+                                        <td>
+                                            @item.ProductName
+                                        </td>
+                                        <td>
+                                            @item.Weight
+                                        </td>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            @item.Price
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        @Model.Description
+                    </p>
+                    <div class="form-row mt-4">
+                        <div class="form-group col-md flex-grow-0">
+                            <div class="input-group mb-3 input-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-light" type="button" id="button-minus">-</button>
+                                </div>
+                                <input type="text" class="form-control" value="1" id="quantity-input">
+                                <div class="input-group-append">
+                                    <button class="btn btn-light" type="button" id="button-plus">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </article> <!-- product-info-aside .// -->
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+        <!-- ================ ITEM DETAIL END .// ================= -->
+
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y bg">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-auto">
+                <h5 class="title-description">Description</h5>
+                <p>
+                    @Model.Description
+                </p>
+                <h5 class="title-description">Long Description</h5>
+                @Model.LongDescription
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+<script>
+    document.getElementById('button-minus').onclick = function () {
+        var input = document.getElementById('quantity-input');
+        var value = parseInt(input.value);
+
+        if (value > 1) {
+            input.value = value - 1;
+        }
+    };
+
+    document.getElementById('button-plus').onclick = function () {
+        var input = document.getElementById('quantity-input');
+        var value = parseInt(input.value);
+
+        input.value = value + 1;
+    };
+</script>

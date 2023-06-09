@@ -18,6 +18,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<ICombosServices, CombosServices>();
+builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<CombosServices>();
 
 builder.Services.AddScoped<IProductServices, ProductServices>();
@@ -57,6 +58,6 @@ app.UseEndpoints(endpoints =>
     );
     endpoints.MapControllerRoute(
    name: "default",
-    pattern: "{controller=Guest}/{action=Home}/{id?}");
+    pattern: "{controller=Home}/{action=Home}/{id?}");
 });
 app.Run();
