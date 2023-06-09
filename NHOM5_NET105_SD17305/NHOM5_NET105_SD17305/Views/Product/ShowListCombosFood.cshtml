@@ -1,0 +1,111 @@
+﻿@model IEnumerable<NHOM5_NET105_SD17305.Data.Models.Combos>
+@{
+    ViewData["Title"] = "Đang code";
+    Layout = "~/Views/Shared/_LayoutPageProduct.cshtml";
+
+}
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-2">
+                @{
+                    var selectListItems = new List<SelectListItem>
+                {
+                new SelectListItem { Value = "XS", Text = "XS" },
+                new SelectListItem { Value = "SM", Text = "SM" },
+                new SelectListItem { Value = "LG", Text = "LG" },
+                new SelectListItem { Value = "XXL", Text = "XXL" }
+                };
+                    var selectedSizes = ViewData["SelectedSizes"] as string[];
+                }
+
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4">
+                            Sizes
+                        </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_4">
+                        <div class="inner">
+                            @foreach (var item in selectListItems)
+                            {
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" name="selectedSizes" value="@item.Value" @(selectedSizes != null && selectedSizes.Contains(item.Value) ? "checked='checked'" : "")>
+                                    <span class="btn btn-light">@item.Text</span>
+                                </label>
+                            }
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3">
+                            Price
+                            range
+                        </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_3">
+                        <div class="inner">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Min</label>
+                                    <input class="form-control" placeholder="100,000đ" type="number" min="0">
+                                </div>
+                                <div class="form-group text-right col-md-6">
+                                    <label>Max</label>
+                                    <input class="form-control" placeholder="1,0000,000đ" type="number" min="0">
+                                </div>
+                            </div> <!-- form-row.// -->
+                            <button class="btn btn-block btn-primary">Apply</button>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+
+            </aside> <!-- col.// -->
+            <main class="col-md-10">
+                <header class="mb-3">
+                    <div class="form-inline">
+                        <strong class="mr-md-auto"> </strong>
+                        <select class="mr-2 form-control">
+                            <option>-- options --</option>
+                            <option>Giá tăng dần</option>
+                            <option>Giá giảm dần</option>
+                        </select>
+                    </div>
+                </header><!-- sect-heading -->
+
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3">
+                            <a href="DetailProduct/@item.Id">
+                                <figure class="card card-product-grid">
+                                    <div class="img-wrap">
+                                        <span class="badge badge-danger"> NEW </span>
+                                        <img src="https://picsum.photos/200/300">
+                                    </div> <!-- img-wrap.// -->
+                                    <figcaption class="info-wrap">
+                                        <a href="#" class="title mb-2">
+                                            @item.CombosName
+                                        </a>
+                                        <div class="price-wrap">
+                                            <span class="price">$@item.CombosPrice</span>
+                                            <small class="text-muted">/per bag</small>
+                                        </div> <!-- price-wrap.// -->
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div> <!-- col.// -->
+                    }
+                </div> <!-- row end.// -->
+            </main> <!-- col.// -->
+
+        </div>
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
