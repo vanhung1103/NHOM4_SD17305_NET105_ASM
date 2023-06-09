@@ -51,15 +51,15 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1306817d-ed92-4164-a935-b5d4cb4beac5",
-                            ConcurrencyStamp = "c543cb74-6bc5-43e2-9c34-16b16347c0b0",
+                            Id = "a18dbd66-fb08-40c2-86c6-457364d93a5e",
+                            ConcurrencyStamp = "c580befb-16cc-45fb-b5dd-7e8aac7bf93e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d5e4febc-ae7b-438f-8e4e-7613c5b02628",
-                            ConcurrencyStamp = "6ad0f583-3696-425f-b833-8ab636db859d",
+                            Id = "a78c9e7c-fb03-42e0-a391-d23ffe639e2b",
+                            ConcurrencyStamp = "a44ccb79-55e4-4eee-9d58-7ca0249f77f8",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -483,9 +483,8 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CombosPrice")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CombosPrice")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -493,6 +492,10 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     b.Property<double>("Discount")
                         .HasColumnType("float");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LongDescription")
                         .IsRequired()

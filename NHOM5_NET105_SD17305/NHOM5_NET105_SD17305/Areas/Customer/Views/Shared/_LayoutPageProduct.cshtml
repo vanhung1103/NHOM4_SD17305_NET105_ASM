@@ -7,7 +7,7 @@
     <meta http-equiv="cache-control" content="max-age=604800" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Website title - bootstrap html template</title>
+    <title>Website 4man</title>
 
     <link rel="shortcut icon" href="~/images/logo.png">
 
@@ -47,13 +47,7 @@
                         <div class="col-xl-6 col-lg-5 col-md-6">
                             <form action="#" class="search-header">
                                 <div class="input-group w-100">
-                                    <select class="custom-select border-right" name="category_name">
-                                        <option value="">All type</option>
-                                        <option value="codex">Special</option>
-                                        <option value="comments">Only best</option>
-                                        <option value="content">Latest</option>
-                                    </select>
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" class="form-control" name="StrSearch" value="@ViewBag.StrSearch" placeholder="Search">
 
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit">
@@ -65,37 +59,11 @@
                         </div> <!-- col.// -->
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="widgets-wrap float-md-right">
-                                <div class="widget-header">
-                                    <a class="widget-view" asp-controller="Home" asp-action="Cart">
-                                        <div class="icon-area">
-                                            <i class="fa fa-shopping-cart"></i>
-                                            <span class="notify">3</span>
-                                        </div>
-                                        <small class="text"> Cart </small>
-                                    </a>
+                                <div class="widget-header mr-3">
+                                    @Html.ActionLink("SignIn","SignIn","SignIn",null,new {@class = "btn btn-outline-success"})
                                 </div>
                                 <div class="widget-header mr-3">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                        <img src="~/images/avatars/logo.png"
-                                             class="rounded-circle" height="25" alt="Black and White Portrait of a Man"
-                                             loading="lazy" />
-                                    </a>
-                                    <ul class="dropdown-menu small">
-                                        <li>
-                                            <a class="dropdown-item" asp-controller="Home" asp-action="MyAccount">  <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" asp-controller="Home" asp-action="MyOrder"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> My Order</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" asp-controller="Home" asp-action="OrderHistory">  <i class="fa fa-id-card-o" aria-hidden="true"></i>Order History</a>
-                                        </li>
-
-                                        <li>
-                                            <a class="dropdown-item" href="#"> <i class="fa fa-sign-out"></i> Log Out</a>
-                                        </li>
-
-                                    </ul>
+                                    @Html.ActionLink("SignUp","SignUp","SignUp",null,new {@class = "btn btn-outline-info"})
                                 </div>
                             </div> <!-- widgets-wrap.// -->
                         </div> <!-- col.// -->
@@ -105,35 +73,24 @@
             <nav class="navbar navbar-main navbar-expand pl-0">
                 <ul class="navbar-nav flex-wrap">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Adm" asp-action="Index">Admin</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Home">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Home">Home</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Home">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="ShowListProduct">ShowListProduct</a>
+                        <a class="nav-link" asp-controller="Product" asp-action="ShowListFastFood">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="ProductDetail">ProductDetail</a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="Combos" asp-action="Index">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="SignIn">SignIn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="SignUp">SignUp</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Dropdown </a>
                         <div class="dropdown-menu small">
                             <nav class="row">
                                 <div class="col-md-auto">
-                                    <a class="nav-link" asp-controller="Home" asp-action="CheckOut">CheckOut</a>
+                                    <a class="nav-link" asp-controller="Guest" asp-action="Home">Home</a>
                                 </div>
-                                <div class="col-md-auto">
-                                    <a class="nav-link" asp-controller="Home" asp-action="ShowListProduct">ShowListProduct</a>
-                                </div>
-
                             </nav> <!--  row end .// -->
                         </div> <!--  dropdown-menu dropdown-large end.// -->
                     </li>
@@ -145,6 +102,10 @@
 
     <div class="container">
         <main role="main" class="pb-3">
+            <div style="text-align:center"> 
+                @Html.ActionLink("Fast Food","ShowListFastFood","Product",null,new {@class= "btn btn-outline-success"})
+                @Html.ActionLink("Combos Food","ShowListCombosFood","Product",null,new {@class= "btn btn-outline-success"})
+            </div>
             @RenderBody()
         </main>
     </div>
