@@ -5,7 +5,13 @@
 	var products = ViewBag.productss;
 	List<CombosItem> combosItems = ViewBag.combos;
 	List<Product> allProduct = ViewBag.allproduct;
+
+	List<string> imageExtensions = new List<string>()
+	{
+		".png", ".jpg", ".jpeg", ".gif", ".tiff", ".pdf"
+	};
 }
+
 <div class="row">
 	<div class="col-12">
 		<div class="card mb-4">
@@ -28,7 +34,18 @@
 								<td>
 									<div class="d-flex px-2 py-1">
 										<div>
-											<img src="https://garankuccu.com/upload/product/b/d/2/combo-4-jpg.jpg" class="avatar avatar-sm me-3" alt="user1">
+
+											@{
+												string extension = System.IO.Path.GetExtension(Model.Image);
+											}
+											@if (imageExtensions.Contains(extension.Trim()))
+											{
+												<img src=~/images/@Model.Image class="avatar" style="width:100px;height:100px">
+											}
+											else
+											{
+												<img src=~/images/default.png class="avatar" style="width:100px;height:100px">
+											}
 										</div>
 										<div class="d-flex flex-column justify-content-center">
 											<h6 class="mb-0 text-sm">@Model.CombosName</h6>
@@ -78,13 +95,10 @@
 						</thead>
 						<tbody>
 							<div class="row">
-											<form method="post" asp-area="Admin" asp-controller="Combos" asp-action="Updatequantity">
-								@{
-									foreach (var item in combosItems)
+								<form>
+									@foreach (var item in combosItems)
 									{
 										var product = allProduct.FirstOrDefault(c => c.Id == item.ProductId);
-
-
 										<div class="col-md-3">
 											<div class="thumbnail">
 												<a>
@@ -95,22 +109,21 @@
 														<div class="col-8">
 															<div class="form-group">
 																<input style="width:80px" class="form-control" type="number" min="1" max="100" name="quantity" value="@item.Quantity">
+																<input type="text" hidden name="idsp" value="@item.ProductId" />
 															</div>
 														</div>
 														<div class="col-4">
 															<div class="form-group">
-																<input type="hidden" name="idsp" value="@item.ProductId" />
-															
-																<input type="submit" value="Save" class="btn btn-primary" />
+																<input type="submit" value="Save" formaction="@Url.Action("Updatequantity", "Combos","Admin")" formmethod="post" class="btn btn-outline-primary" />
 															</div>
 														</div>
 													</div>
 												</a>
 											</div>
 										</div>
+								
 									}
-								}
-							</form>
+								</form>
 							</div>
 						</tbody>
 						@*						//

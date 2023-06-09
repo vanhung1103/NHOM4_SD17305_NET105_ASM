@@ -51,15 +51,15 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a18dbd66-fb08-40c2-86c6-457364d93a5e",
-                            ConcurrencyStamp = "c580befb-16cc-45fb-b5dd-7e8aac7bf93e",
+                            Id = "0a1b32bc-00b3-44ed-9e6a-9680ea16925b",
+                            ConcurrencyStamp = "7684bec0-f690-4826-9ef0-e7f718695996",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a78c9e7c-fb03-42e0-a391-d23ffe639e2b",
-                            ConcurrencyStamp = "a44ccb79-55e4-4eee-9d58-7ca0249f77f8",
+                            Id = "f3be1e3c-52d2-4ad0-ae3e-01108b66fe48",
+                            ConcurrencyStamp = "d12e33f3-fd89-4e0b-b6c5-f2f37f465f64",
                             Name = "User",
                             NormalizedName = "USER"
                         });

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
 using NHOM5_NET105_SD17305.Data.IServices;
 using NHOM5_NET105_SD17305.Data.Models;
 using NHOM5_NET105_SD17305.Data.Services;
@@ -13,13 +14,14 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 		private readonly ICombosServices _comboService;
 		private readonly IProductServices _productService;
 		private readonly ICombosItemServices _comboItemService;
+		public INotyfService _notyfService { get; }
 		public static int _idCombo;
-
 		public int _idProduct;
-		public CombosController(ICombosServices combosServices, IProductServices productServices, ICombosItemServices combosItemServices)
+		public CombosController(ICombosServices combosServices, IProductServices productServices, ICombosItemServices combosItemServices, INotyfService notyfService)
 		{
 			_comboService = combosServices;
 			_productService = productServices;
+			_notyfService = notyfService;
 			_comboItemService = combosItemServices;
 		}
 		[HttpGet]
@@ -39,27 +41,36 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 
 		[HttpPost]
 
-		public async Task<IActionResult> CreateCombo(Combos combos)
+		public async Task<IActionResult> CreateCombo(Combos combos, IFormFile imageFile)
 		{
-			//bool isproduct = productServices.GetAllProducts().Any(c => c.Name == product.Name && c.Supplier == product.Supplier);
-			//if (!isproduct)
-			//{
-			//    return Content("Hoc lai");
-			//}
-
-			await _comboService.CreateCombosAsync(combos);
-
-			List<Product> product = await _productService.GetAllProductAsync();
-			ViewBag.products = product;
-
-			_idCombo = combos.Id;
-			return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+			if (imageFile != null && imageFile.Length > 0) // Kiểm tra đường dẫn phù hợp
+			{
+				// thực hiện việc sao chép ảnh đó vào wwwroot
+				// Tạo đường dẫn tới thư mục sao chép (nằm trong root)
+				var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+					"images", imageFile.FileName); // abc/wwwroot/images/xxx.png
+				var stream = new FileStream(path, FileMode.Create); // Tạo 1 filestream để tạo mới
+				imageFile.CopyTo(stream); // Copy ảnh vừa dc chọn vào đúng cái stream đó
+										  // Gán lại giá trị link ảnh (lúc này đã nằm trong root cho thuộc tính description)
+				combos.Image = imageFile.FileName;
+				await _comboService.CreateCombosAsync(combos);
+				_notyfService.Error("Thêm Combo thành công");
+				List<Product> product = await _productService.GetAllProductAsync();
+				ViewBag.products = product;
+				_idCombo = combos.Id;
+				return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+			}
+			else
+			{
+				_notyfService.Error("Thêm Combo không thành công");
+				return RedirectToAction("CreateCombo", "Combos", new { area = "Admin" });
+			}
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> DetailCombos(int id)
 		{
-			_idCombo = id;
+			
 			var DetailCombo = await _comboService.GetCombosByIdAsync(id);
 			if (DetailCombo == null)
 			{
@@ -77,6 +88,7 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 			List<Product> products = await _productService.GetAllProductAsync();
 			var productsss = products.Where(c => !comboProduc.Any(b => b.ProductId == c.Id));
 			ViewBag.productss = productsss;
+			_idCombo = id;
 			return View(DetailCombo);
 		}
 
@@ -127,25 +139,60 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 				return BadRequest();
 			}
 		}
-		public async Task<ActionResult> Updatequantity(int quantity,int idsp) // Mở form
+		public async Task<ActionResult> Updatequantity(List<int> quantity, List<int> idsp)
 		{
-			var quantitysp = await _productService.GetProductByIdAsync(idsp);
-			int slsp = quantitysp.Quantity;
 			var updatequantity = await _comboItemService.GetAllCombosItemAsync();
-			var a = updatequantity.FirstOrDefault(c=>c.CombosId==_idCombo&&c.ProductId==idsp);
-			a.Quantity = quantity;
 
-			if (quantity > slsp)
+			for (int i = 0; i < idsp.Count; i++)
 			{
+				var sp = await _productService.GetProductByIdAsync(idsp[i]);
+				int slsp = sp.Quantity;
 
-				return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+				var a = updatequantity.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp[i]);
+				a.Quantity = quantity[i];
+
+				if (quantity[i] > slsp)
+				{
+					_notyfService.Error("Thay đổi số lượng sản phẩm không thành công");
+					return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+				}
+				else
+				{
+					bool check = await _comboItemService.UpdateCombosItemAsync(a);
+					// Kiểm tra giá trị của 'check' để xác định việc cập nhật đã thành công hay không
+				}
 			}
-			else
-			{
-				_comboItemService.UpdateCombosItemAsync(a);
-				return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
-			}
-		
+
+			_notyfService.Success("Thay đổi số lượng sản phẩm thành công");
+			return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+		}
+		//public async Task<ActionResult> Updatequantity(int quantity, int idsp) // Mở form
+		//{
+		//	var sp = await _productService.GetProductByIdAsync(idsp); // lấy all sp
+		//	int slsp = sp.Quantity;
+		//	var updatequantity = await _comboItemService.GetAllCombosItemAsync(); // get all combos
+		//	var a = updatequantity.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp); //get sp  by id
+		//	a.Quantity = quantity; // gán sl
+
+		//	if (quantity > slsp)
+		//	{
+		//		_notyfService.Error("Thay đổi số lương sản phẩm không thành công");
+		//		return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+		//	}
+		//	else
+		//	{
+		//		bool check = await _comboItemService.UpdateCombosItemAsync(a);
+		//		// lỗi sản phẩm đầu thay đổi được
+		//		_notyfService.Success("Thay đổi số lương sản phẩm thành công ");
+		//		return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+		//	}
+
+		//}
+		public async Task<ActionResult> DeleteCombo(int id) // Mở form
+		{
+			await _comboService.DeleteCombosAsync(id);
+			return RedirectToAction("Index", "Combos", new {area = "Admin" });
 		}
 	}
 }
+

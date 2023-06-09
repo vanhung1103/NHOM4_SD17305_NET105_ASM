@@ -10,7 +10,7 @@
         </h3>
     </div>
     <div class="col-md-12">
-        <form asp-area="Admin" asp-controller="Combos" asp-action="CreateCombo">
+        <form asp-area="Admin" asp-controller="Combos" asp-action="CreateCombo" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label class="control-label">Tên Combo</label>
@@ -18,10 +18,15 @@
                 <span asp-validation-for="CombosName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label">Ảnh</label>
+                <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
                 <label class="control-label">Giá</label>
                 <input asp-for="CombosPrice" class=" form-control" />
                 <span asp-validation-for="CombosPrice" class="text-danger"></span>
-            </div>
+            </div>  
             <div class="form-group">
                 <label  class="control-label">Giảm Giá</label>
                 <input asp-for="Discount" class="form-control" />
