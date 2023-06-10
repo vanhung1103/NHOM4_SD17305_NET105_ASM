@@ -11253,11 +11253,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Views.csproj",
+      "projectUniqueName": "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Views.csproj",
       "projectName": "NHOM5_NET105_SD17305.Views",
-      "projectPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Views.csproj",
+      "projectPath": "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Views.csproj",
       "packagesPath": "C:\\Users\\Trung2701\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\obj\\",
+      "outputPath": "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11278,11 +11278,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj": {
-              "projectPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj"
+            "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj": {
+              "projectPath": "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj"
             },
-            "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
-              "projectPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj"
+            "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
+              "projectPath": "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj"
             }
           }
         }
