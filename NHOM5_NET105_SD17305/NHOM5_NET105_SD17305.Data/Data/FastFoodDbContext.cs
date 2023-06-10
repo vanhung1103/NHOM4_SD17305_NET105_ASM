@@ -45,7 +45,7 @@ namespace NHOM5_NET105_SD17305.Data.Data
         //public DbSet<Role> roles { get; set; }
         //public DbSet<User> users { get; set; }
         public DbSet<Customer> Customers { get; set; }
-
+        public DbSet<ProductImage> productImages { get; set; }
         #endregion 
     }
 }

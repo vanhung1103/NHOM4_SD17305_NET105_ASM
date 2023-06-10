@@ -20,6 +20,9 @@ builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<ICombosServices, CombosServices>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<CombosServices>();
+builder.Services.AddScoped<IcartItemServices, CartItemServices>();
+builder.Services.AddScoped<CartItemServices>();
+
 
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<ProductServices>();

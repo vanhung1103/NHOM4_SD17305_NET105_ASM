@@ -16,12 +16,11 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public string Descriptions { get; set; } 
         public string LongDescription { get; set; }
         [ForeignKey("Cate_Id")]
-        [Required] 
         
-        public Category Category { get; set; }
-        public  ICollection<CombosItem> CombosItem { get; set; }
-        public ICollection<PromotionItem> promotionItems { get; set; }
-        public ICollection<CartItem> cartItems { get; set; }
-        public ICollection<BillItem> billItems { get; set; }
+        public Category? Category { get; set; }
+        public  ICollection<CombosItem>? CombosItem { get; set; }
+        public ICollection<PromotionItem>? promotionItems { get; set; }
+        public ICollection<CartItem>? cartItems { get; set; }
+        public ICollection<BillItem>? billItems { get; set; }
     }
 }

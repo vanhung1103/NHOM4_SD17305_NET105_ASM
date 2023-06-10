@@ -51,15 +51,15 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a18dbd66-fb08-40c2-86c6-457364d93a5e",
-                            ConcurrencyStamp = "c580befb-16cc-45fb-b5dd-7e8aac7bf93e",
+                            Id = "6bef5990-d2a3-4da3-bf4f-50dfea5fe925",
+                            ConcurrencyStamp = "2136ee24-170e-4221-8780-a69813448816",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a78c9e7c-fb03-42e0-a391-d23ffe639e2b",
-                            ConcurrencyStamp = "a44ccb79-55e4-4eee-9d58-7ca0249f77f8",
+                            Id = "da8472f6-cb9c-492b-b16a-de0215c2deac",
+                            ConcurrencyStamp = "1fc26b85-3ddf-407e-8973-e7b3f450c25c",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -430,11 +430,19 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int?>("CombosId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -598,7 +606,6 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("Cate_Id")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Descriptions")
@@ -631,6 +638,43 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.HasIndex("Cate_Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.ProductImage", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+
+                    b.Property<int?>("Cate_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descriptions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LongDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId");
+
+                    b.ToTable("productImages");
                 });
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Promotion", b =>
@@ -866,9 +910,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("Cate_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Cate_Id");
 
                     b.Navigation("Category");
                 });
