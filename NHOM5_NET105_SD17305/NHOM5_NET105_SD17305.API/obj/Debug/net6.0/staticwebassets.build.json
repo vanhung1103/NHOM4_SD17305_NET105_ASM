@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YtnCGE0g58VRGGwUR/v7D+Cqp+K07mn3gLKoCzVSVCs=",
+  "Hash": "lnEiLvM7yV7qjNFnjoqbIcKiHxwTvpNxKKw0OsWC9/g=",
   "Source": "NHOM5_NET105_SD17305.API",
   "BasePath": "_content/NHOM5_NET105_SD17305.API",
   "Mode": "Default",
@@ -9,10 +9,10 @@
   "DiscoveryPatterns": [],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.css",
+      "Identity": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.css",
       "SourceId": "AspNetCoreHero.ToastNotification",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
       "BasePath": "_content/AspNetCoreHero.ToastNotification",
       "RelativePath": "notyf.min.css",
       "AssetKind": "All",
@@ -23,13 +23,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.css"
+      "OriginalItemSpec": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.css"
     },
     {
-      "Identity": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.js",
+      "Identity": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.js",
       "SourceId": "AspNetCoreHero.ToastNotification",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
       "BasePath": "_content/AspNetCoreHero.ToastNotification",
       "RelativePath": "notyf.min.js",
       "AssetKind": "All",
@@ -40,13 +40,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.js"
+      "OriginalItemSpec": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\notyf.min.js"
     },
     {
-      "Identity": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.css",
+      "Identity": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.css",
       "SourceId": "AspNetCoreHero.ToastNotification",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
       "BasePath": "_content/AspNetCoreHero.ToastNotification",
       "RelativePath": "toastify.css",
       "AssetKind": "All",
@@ -57,13 +57,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.css"
+      "OriginalItemSpec": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.css"
     },
     {
-      "Identity": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.js",
+      "Identity": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.js",
       "SourceId": "AspNetCoreHero.ToastNotification",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\",
       "BasePath": "_content/AspNetCoreHero.ToastNotification",
       "RelativePath": "toastify.js",
       "AssetKind": "All",
@@ -74,7 +74,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Trung2701\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.js"
+      "OriginalItemSpec": "C:\\Users\\dinht\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\staticwebassets\\toastify.js"
     }
   ]
 }

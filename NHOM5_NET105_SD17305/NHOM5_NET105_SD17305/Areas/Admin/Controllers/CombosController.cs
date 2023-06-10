@@ -128,16 +128,28 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 			return View(role);
 		}
 		[HttpPost]
-		public async Task<IActionResult> UpdateCombo(Combos r) // Mở form
+		public async Task<IActionResult> UpdateCombo(Combos r, IFormFile imageFile) // Mở form
 		{
-			if (await _comboService.UpdateCombosAsync(r))
-			{
-				return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
-			}
-			else
-			{
-				return BadRequest();
-			}
+
+            if (imageFile != null && imageFile.Length > 0) // Kiểm tra đường dẫn phù hợp
+            {
+                // thực hiện việc sao chép ảnh đó vào wwwroot
+                // Tạo đường dẫn tới thư mục sao chép (nằm trong root)
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+                    "images", imageFile.FileName); // abc/wwwroot/images/xxx.png
+                var stream = new FileStream(path, FileMode.Create); // Tạo 1 filestream để tạo mới
+                imageFile.CopyTo(stream); // Copy ảnh vừa dc chọn vào đúng cái stream đó
+                                          // Gán lại giá trị link ảnh (lúc này đã nằm trong root cho thuộc tính description)
+                r.Image = imageFile.FileName;
+                await _comboService.UpdateCombosAsync(r);
+                _notyfService.Error("Edit Combo thành công");
+                _idCombo = r.Id;
+                return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+            }
+            else
+            {
+                return BadRequest();
+            }
 		}
 		public async Task<ActionResult> Updatequantity(List<int> quantity, List<int> idsp)
 		{
