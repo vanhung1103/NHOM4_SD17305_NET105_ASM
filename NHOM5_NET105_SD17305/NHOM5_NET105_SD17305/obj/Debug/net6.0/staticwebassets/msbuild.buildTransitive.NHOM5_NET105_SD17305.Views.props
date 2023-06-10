@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\NHOM5_NET105_SD17305.Views.props" />
-</Project>

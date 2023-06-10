@@ -50,41 +50,41 @@ namespace NHOM5_NET105_SD17305.API.Controllers
         }
         [HttpPost("them-anh")]
 
-        public async Task<IActionResult> PostImage([FromForm] ProductImage p)
-        {
-            var pro = await _iproductServices.GetProductByIdAsync(p.ProductId);
-            if (pro != null)
-            {
-                return Ok("Product exist");
-            }
-            else
-            {
-                var product = new Product
-                {
-                    Id = p.ProductId,
-                    ProductName = p.ProductName,
-                    Cate_Id = p.Cate_Id,
-                    Price = p.Price,
-                    Weight = p.Weight,
-                    Quantity = p.Quantity,
-                    Descriptions = p.Descriptions,
-                    LongDescription = p.LongDescription
+        //public async Task<IActionResult> PostImage([FromForm] ProductImage p)
+        //{
+        //    var pro = await _iproductServices.GetProductByIdAsync(p.ProductId);
+        //    if (pro != null)
+        //    {
+        //        return Ok("Product exist");
+        //    }
+        //    else
+        //    {
+        //        var product = new Product
+        //        {
+        //            Id = p.ProductId,
+        //            ProductName = p.ProductName,
+        //            Cate_Id = p.Cate_Id,
+        //            Price = p.Price,
+        //            Weight = p.Weight,
+        //            Quantity = p.Quantity,
+        //            Descriptions = p.Descriptions,
+        //            LongDescription = p.LongDescription
 
-                };
-                if (p.Image.Length > 0)
-                {
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images","items", p.Image.FileName);
-                    using (var stream = System.IO.File.Create(path))
-                    {
-                        await p.Image.CopyToAsync(stream);
-                    }
-                    product.Image = "/images/items" + p.Image.FileName;
-                }
+        //        };
+        //        if (p.Image.Length > 0)
+        //        {
+        //            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images","items", p.Image.FileName);
+        //            using (var stream = System.IO.File.Create(path))
+        //            {
+        //                await p.Image.CopyToAsync(stream);
+        //            }
+        //            product.Image = "/images/items" + p.Image.FileName;
+        //        }
 
-                await _iproductServices.CreateProductAsync(product);
-                return Ok(product);
-            }
-        }
+        //        await _iproductServices.CreateProductAsync(product);
+        //        return Ok(product);
+        //    }
+        //}
         [HttpPut("{id}")]
 
         public async Task<IActionResult> Put(Product pro)
