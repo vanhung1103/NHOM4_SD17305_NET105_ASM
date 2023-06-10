@@ -13,6 +13,7 @@ builder.Services.AddDbContext<FastFoodDbContext>(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<FastFoodDbContext>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IProductServices, ProductServices>();    
 builder.Services.AddScoped<UserServices>();
 // Add services to the container.
 
