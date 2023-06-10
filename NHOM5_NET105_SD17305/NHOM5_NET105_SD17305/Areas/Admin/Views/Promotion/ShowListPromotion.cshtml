@@ -1,5 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<NHOM5_NET105_SD17305.Data.Models.Promotion>
+<h2>
+    @Html.ActionLink("Create New","CreatePromotion","Promotion",null,new {@class = "btn btn-outline-success"})
+</h2>
+<table class="table align-items-center mb-0">
+    <thead>
+        <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.PromotionName)</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.PromoCode)</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.PromoValue)</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.Create_Date)</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Html.DisplayNameFor(model => model.End_Date)</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Control</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">@item.PromotionName</h6>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">@item.PromoCode</h6>
+                    </div>
+                </div>
+            </td>
+            <td class="align-middle text-center text-sm">
+               <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">@item.PromoValue %</h6>
+                    </div>
+                </div>
+            </td>
+            <td class="align-middle text-center">
+                <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">@item.Create_Date.ToShortDateString()</h6>
+                    </div>
+                </div>
+            </td>
+            <td class="align-middle text-center">
+                <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">@item.End_Date.ToShortDateString()</h6>
+                    </div>
+                </div>
+            </td>
+
+            <td class="align-middle">
+                    @Html.ActionLink("Detail","ShowListPromotionItems","Promotion",new {id = item.Id},new {@class = "btn btn-outline-success"})
+                    @Html.ActionLink("Add Items","ShowListProductToAdd","Promotion",new {id = item.Id},new {@class = "btn btn-outline-success"})
+                    @Html.ActionLink("Edit","EditPromotion","Promotion",new {id = item.Id},new {@class = "btn btn-outline-info"})
+                    @Html.ActionLink("Remove","RemovePromotion","Promotion",new {id = item.Id},new {@class = "btn btn-outline-danger", onclick = "return confirm('Are you sure you want to remove this item?');"})
+
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

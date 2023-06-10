@@ -1,0 +1,39 @@
+﻿@model NHOM5_NET105_SD17305.Data.Models.Promotion
+<div class="container">
+    <div>
+        <form asp-action="EditPromotion">
+            <div class="form-group">
+                <label asp-for="PromotionName" class="control-label">PromotionName</label>
+                <input asp-for="PromotionName" type="text"  class="form-control" />
+                <span asp-validation-for="PromotionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromoCode" class="control-label">PromoCode</label>
+                <input asp-for="PromoCode" type="text" class="form-control" />
+                <span asp-validation-for="PromoCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromoValue" class="control-label">PromoValue</label>
+                <input asp-for="PromoValue" type="number" min="0" max="100" class="form-control" />
+                <span asp-validation-for="PromoValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Create_Date" class="control-label">Create_Date</label>
+                <input asp-for="Create_Date" type="date"  class="form-control" />
+                <span asp-validation-for="Create_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="End_Date" class="control-label">End_Date</label>
+                <input asp-for="End_Date" type="date" class="form-control" />
+                <span asp-validation-for="End_Date" class="text-danger"></span>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <a asp-action="ShowListPromotion" class="btn btn-secondary"><i class="fa-solid fa-backward"> Back</i></a>
+                <button type="submit" class="btn btn-success">Save <i class="fa-solid fa-floppy-disk"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<br />

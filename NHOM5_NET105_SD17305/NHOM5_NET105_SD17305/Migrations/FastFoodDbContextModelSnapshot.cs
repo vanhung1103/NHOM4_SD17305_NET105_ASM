@@ -51,15 +51,15 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6bef5990-d2a3-4da3-bf4f-50dfea5fe925",
-                            ConcurrencyStamp = "2136ee24-170e-4221-8780-a69813448816",
+                            Id = "df419f66-cfd4-4126-924f-252773ca2e15",
+                            ConcurrencyStamp = "096b90f8-bf63-4094-94b2-8ebc188d9c64",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "da8472f6-cb9c-492b-b16a-de0215c2deac",
-                            ConcurrencyStamp = "1fc26b85-3ddf-407e-8973-e7b3f450c25c",
+                            Id = "c66bdc60-8ac1-485e-af65-431791dbdd35",
+                            ConcurrencyStamp = "bfee4dc5-4e62-49e9-aee5-1d1daec22666",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -430,19 +430,11 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int?>("CombosId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -606,6 +598,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("Cate_Id")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Descriptions")
@@ -640,43 +633,6 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.ProductImage", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
-
-                    b.Property<int?>("Cate_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descriptions")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LongDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Weight")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("productImages");
-                });
-
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Promotion", b =>
                 {
                     b.Property<int>("Id")
@@ -691,8 +647,16 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<DateTime>("End_Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PromotionName")
+                    b.Property<string>("PromoCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PromoValue")
                         .HasColumnType("int");
+
+                    b.Property<string>("PromotionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -709,14 +673,6 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
-
-                    b.Property<string>("PromoCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PromoValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PromotionId")
                         .HasColumnType("int");
@@ -910,7 +866,9 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("Cate_Id");
+                        .HasForeignKey("Cate_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });

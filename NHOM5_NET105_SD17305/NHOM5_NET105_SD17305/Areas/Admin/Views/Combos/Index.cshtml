@@ -1,70 +1,87 @@
 ﻿@model ICollection<NHOM5_NET105_SD17305.Data.Models.Combos>
+@{
+	List<string> imageExtensions = new List<string>()
+	{
+		".png", ".jpg", ".jpeg", ".gif", ".tiff", ".pdf"
+	};
+}
 <body class="g-sidenav-show   bg-gray-100">
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-4">
-                <div class="card-header pb-6">
-                   <div class="row">
-                       <div class="col-6">
-                           <h6>Combo</h6>
-                       </div>
-                       <div class="col-6">
-                                <a style="margin-left:400px" asp-area="Admin" asp-controller="Combos" asp-action="CreateCombo">Tạo Combo mới</a>
-                        </div>
-                   </div>
-                </div>
-                <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sản phẩm</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Giá</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giảm giá</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mô tả</th>
-                                    <th class="text-secondary opacity-7"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                        
-                                    @{
-                                        foreach(var item in Model)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div>
-                                                            <img src="https://garankuccu.com/upload/product/b/d/2/combo-4-jpg.jpg" class="avatar avatar-sm me-3" alt="user1">
-                                                        </div>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">@item.CombosName</h6>
-                                                         
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>    
-                                                    <p class="text-xs font-weight-bold mb-0">@item.CombosPrice</p>
-                                                   
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <p class="text-xs font-weight-bold mb-0">@item.Discount</p>
-                                                </td>
-                                                <td class="align-middle text-center">
-                                                   <p class="text-xs font-weight-bold mb-0">@item.Description</p>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <a asp-area="Admin" asp-controller="Combos" asp-action="DetailCombos" asp-route-Id="@item.Id">Edit</a>
-                                                </td>
-                                            </tr>
-                                        }
-                                    }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-12">
+				<div class="card mb-4">
+					<div class="card-header pb-6">
+						<div class="row">
+							<div class="col-6">
+								<h6>Combo</h6>
+							</div>
+							<div class="col-6">
+								<a style="margin-left:400px" class="btn btn-outline-primary" asp-area="Admin" asp-controller="Combos" asp-action="CreateCombo">Tạo Combo mới</a>
+							</div>
+						</div>
+					</div>
+					<div class="card-body px-0 pt-0 pb-2">
+						<div class="table-responsive p-0">
+							<table class="table align-items-center mb-0">
+								<thead>
+									<tr>
+										<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sản phẩm</th>
+										<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Giá</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giảm giá</th>
+										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mô tả</th>
+										<th class="text-secondary opacity-7"></th>
+									</tr>
+								</thead>
+								<tbody>
+
+									@{
+										foreach (var item in Model)
+										{
+											<tr>
+												<td>
+													<div class="d-flex px-2 py-1">
+														<div>
+															@{
+																string extension = System.IO.Path.GetExtension(item.Image);
+															}
+															@if (imageExtensions.Contains(extension.Trim()))
+															{
+																<img src=~/images/@item.Image class="avatar" style="width:100px;height:100px">
+															}
+															else
+															{
+																<img src=~/images/default.png class="avatar" style="width:100px;height:100px">
+															}
+														</div>
+														<div class="d-flex flex-column justify-content-center">
+															<h6 class="mb-0 text-sm">@item.CombosName</h6>
+
+														</div>
+													</div>
+												</td>
+												<td>
+													<p class="text-xs font-weight-bold mb-0">@item.CombosPrice</p>
+
+												</td>
+												<td class="align-middle text-center text-sm">
+													<p class="text-xs font-weight-bold mb-0">@item.Discount</p>
+												</td>
+												<td class="align-middle text-center">
+													<p class="text-xs font-weight-bold mb-0">@item.Description</p>
+												</td>
+												<td class="align-middle">
+													<a asp-area="Admin" asp-controller="Combos" asp-action="DetailCombos" asp-route-Id="@item.Id" class="btn btn-outline-primary">Edit</a>
+													<a asp-area="Admin" asp-controller="Combos" asp-action="DeleteCombo" asp-route-Id="@item.Id" class="btn btn-outline-primary">Delete</a>
+												</td>
+											</tr>
+										}
+									}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
