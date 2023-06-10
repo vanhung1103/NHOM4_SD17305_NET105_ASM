@@ -7,13 +7,18 @@
     </div>
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <form asp-area="Admin" asp-controller="Combos" asp-action="UpdateCombo">
+        <form asp-area="Admin" asp-controller="Combos" asp-action="UpdateCombo" enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CombosName" class="control-label"></label>
                 <input asp-for="CombosName" class="form-control" />
                 <span asp-validation-for="CombosName" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="color:aqua">
+                <label class="control-label">Ảnh</label>
+                <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CombosPrice" class="control-label"></label>
@@ -37,8 +42,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="LongDescription" class="control-label"></label>
-                <input asp-for="LongDescription" class="form-control" />
-                <span asp-validation-for="LongDescription" class="text-danger"></span>
+                <textarea asp-for="LongDescription" id="summernote">@Model.LongDescription</textarea>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -50,3 +54,28 @@
 
 <div>
 </div>
+
+            <script src="~/lib/summernote/summernote-bs4.min.js"></script>       @* Sử dụng*@
+<link rel="stylesheet" href="~/lib/summernote/summernote-bs4.min.css" />      @* Sử dụng + tải file ~wwwroot\lib\summernote\ *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    /*sử dụng*/
+    $('#summernote').summernote({
+        placeholder: 'Nhập nội dung',
+        tabsize: 5,
+        height: 300,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
