@@ -1,7 +1,11 @@
 html {
   font-size: 14px;
 }
-
+.modal-backdrop.in {
+    opacity: 0;
+    filter: none;
+    display: none !important;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
