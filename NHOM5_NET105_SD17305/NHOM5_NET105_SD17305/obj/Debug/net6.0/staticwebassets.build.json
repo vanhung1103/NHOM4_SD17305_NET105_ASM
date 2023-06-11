@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "p+UW8pfLYENjm1mLmH2odNa06V7lhH8TbtZxRkfwH8o=",
+  "Hash": "1alQGxcyqfuioU+OufTxjX9buSnTs5Wo81kkQUpW5Pg=",
   "Source": "NHOM5_NET105_SD17305.Views",
   "BasePath": "_content/NHOM5_NET105_SD17305.Views",
   "Mode": "Default",
@@ -13381,6 +13381,23 @@
       "OriginalItemSpec": "wwwroot\\images\\avatars\\logo.png"
     },
     {
+      "Identity": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\wwwroot\\images\\banner2.jpg",
+      "SourceId": "NHOM5_NET105_SD17305.Views",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\wwwroot\\",
+      "BasePath": "_content/NHOM5_NET105_SD17305.Views",
+      "RelativePath": "images/banner2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\banner2.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\wwwroot\\images\\favicon.ico",
       "SourceId": "NHOM5_NET105_SD17305.Views",
       "SourceType": "Discovered",
@@ -14314,6 +14331,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\posts\\4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\wwwroot\\images\\Product_lv2.jpg",
+      "SourceId": "NHOM5_NET105_SD17305.Views",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\wwwroot\\",
+      "BasePath": "_content/NHOM5_NET105_SD17305.Views",
+      "RelativePath": "images/Product_lv2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Product_lv2.jpg"
     },
     {
       "Identity": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\wwwroot\\js\\bootstrap.bundle.min.js",

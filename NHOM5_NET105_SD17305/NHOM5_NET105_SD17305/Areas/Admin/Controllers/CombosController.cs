@@ -205,6 +205,13 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 			await _comboService.DeleteCombosAsync(id);
 			return RedirectToAction("Index", "Combos", new { area = "Admin" });
 		}
-	}
+        public async Task<ActionResult> DeleteProductfromCombo(int idsp) // Mở form
+        {
+            var combosItem = await _comboItemService.GetAllCombosItemAsync();
+            int sp = combosItem.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp).CombosItemId;
+            await _comboItemService.DeleteCombosItemAsync(sp);
+            return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+        }
+    }
 }
 
