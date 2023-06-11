@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
 
 namespace NHOM5_NET105_SD17305.Data.Models
 {
@@ -15,6 +17,7 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public string Image { get; set; } 
         public string Descriptions { get; set; } 
         public string LongDescription { get; set; }
+
         [ForeignKey("Cate_Id")]
         
         public Category? Category { get; set; }

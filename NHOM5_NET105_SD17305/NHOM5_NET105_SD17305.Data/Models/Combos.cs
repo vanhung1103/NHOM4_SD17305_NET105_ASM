@@ -1,10 +1,14 @@
-﻿namespace NHOM5_NET105_SD17305.Data.Models
+﻿using System.Diagnostics;
+
+namespace NHOM5_NET105_SD17305.Data.Models
 {
     public class Combos
     {
+       
+
         public int Id { get; set; }
         public int CombosPrice { get; set; }
-        public string CombosName { get; set; }
+        public string? CombosName { get; set; }
         public double Discount { get; set; }
         public int Quantity { get; set; }
         public string Image { get; set; }
@@ -13,6 +17,9 @@
         public ICollection<CartItem> CartItems { get; set; }
         public ICollection<BillItem> BillItems { get; set; }
         public ICollection<CombosItem> CombosItems { get; set; }
+
+       
+
 
     }
 }

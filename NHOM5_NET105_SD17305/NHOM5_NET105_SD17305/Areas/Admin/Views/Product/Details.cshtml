@@ -63,5 +63,5 @@
 <div>
     @Html.ActionLink("Edit", "Edit", new {  id = Model.Id}) |
     <a asp-action="ShowListProduct">Back to List</a>
-    <a class="btn btn-primary" type="submit" asp-area="Admin" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id">AddToCart</a>
+    <a class="btn btn-primary" type="submit" asp-area="Customer" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id">AddToCart</a>
 </div>

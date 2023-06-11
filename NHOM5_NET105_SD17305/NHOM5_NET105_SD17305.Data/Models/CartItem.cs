@@ -12,13 +12,14 @@ namespace NHOM5_NET105_SD17305.Data.Models
         [ForeignKey("ProductId")]
 
         public int? ProductId { get; set; }
-        [ForeignKey("CombosId")]
         public string ProductName { get; set; }
+        [ForeignKey("CombosId")]
 
         public int? CombosId { get; set; } 
         public int Quantity { get; set; }
         public int Price { get; set; }
         public string Image { get; set; }
+       
         public Product Product { get; set; }
         public Combos Combos { get; set; }
         public Cart Cart { get; set; }
@@ -30,9 +31,10 @@ namespace NHOM5_NET105_SD17305.Data.Models
             ProductId = product.Id;
             ProductName = product.ProductName;
             Price = product.Price;
-            Quantity = product.Quantity;
+            Quantity = 1;
             Image = product.Image;
         }
+       
 
     }
 }

@@ -16,7 +16,7 @@
             </aside>
             <main class="col-md-6">
                 <article class="product-info-aside">
-                    <h2 class="title mt-3">@Model.CombosName </h2>
+                       <h2 class="title mt-3">@Model.CombosName </h2>
                     <div class="rating-wrap my-3">
                         <small class="label-rating text-success">
                             <i class="fa fa-clipboard-check"></i> 154 orders
@@ -82,15 +82,23 @@
                                 <div class="input-group-prepend">
                                     <button class="btn btn-light" type="button" id="button-minus">-</button>
                                 </div>
-                                <input type="text" class="form-control" value="1" id="quantity-input">
+                                <form asp-area="Customer" asp-controller="Cart" asp-action="UpdateCart" method="post">
+
+                                    <input type="hidden" name="id" value="@Model.Id" class="form-control" />
+
+                                    <input type="text" class="form-control text-center" value="@Model.Quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" name="quantity">
+
+
+                                    <button type="submit" class="btn btn-primary btn-sm mt-4" value="UpdateCart"> Cập nhật</button>
+                                </form>
                                 <div class="input-group-append">
                                     <button class="btn btn-light" type="button" id="button-plus">+</button>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group col-md">
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
+                            <a class="btn btn-primary" asp-area="Customer" asp-controller="Cart" asp-action="AddCombos" asp-route-id="@Model.Id">
+                                <i class="fas fa-shopping-cart"  ></i> <span class="text">Add to cart</span>
                             </a>
                         </div>
                     </div>
