@@ -45,9 +45,8 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -64,10 +63,10 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("BillStatusId")
+                    b.Property<int?>("BillStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BillStatus_Id")
+                    b.Property<int?>("BillStatus_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Create_Date")
@@ -83,10 +82,10 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<float>("Discount")
                         .HasColumnType("real");
 
-                    b.Property<int>("Payment_TypeId")
+                    b.Property<int?>("Payment_TypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Payment_Type_Id")
+                    b.Property<int?>("Payment_Type_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Payment_date")
@@ -111,7 +110,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int>("TotalAmount")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -136,7 +135,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int>("Bill_Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("BillsId")
+                    b.Property<int?>("BillsId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CombosId")
@@ -222,16 +221,12 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int>("Description")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId1")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Carts");
                 });
@@ -537,10 +532,10 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PromotionId")
+                    b.Property<int?>("PromotionId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -654,21 +649,15 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.BillStatus", "BillStatus")
                         .WithMany("Bills")
-                        .HasForeignKey("BillStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BillStatusId");
 
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Payment_Type", "Payment_Type")
                         .WithMany("bills")
-                        .HasForeignKey("Payment_TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Payment_TypeId");
 
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("BillStatus");
 
@@ -681,9 +670,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Bill", "Bills")
                         .WithMany("BillItem")
-                        .HasForeignKey("BillsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BillsId");
 
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Combos", "Combos")
                         .WithMany("BillItems")
@@ -704,7 +691,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -796,15 +783,11 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Product", "Product")
                         .WithMany("promotionItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Promotion", "Promotion")
                         .WithMany("promotionItems")
-                        .HasForeignKey("PromotionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromotionId");
 
                     b.Navigation("Product");
 
