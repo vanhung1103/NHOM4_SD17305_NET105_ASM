@@ -76,7 +76,7 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
             var getUserId = HttpContext.Session.GetString("UserId") ?? "";
             var getRoleID = HttpContext.Session.GetString("RoleId") ?? "";
             var GetUsser = HttpContext.Session.GetString("UserName") ?? "";
-            if (getUserId!="")
+            if (getUserId != "")
             {
                 var user = await _userServices.GetUserByIdAsync(Convert.ToInt32(getUserId));
                 var username = user.Username;
