@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace NHOM5_NET105_SD17305.Views.Controllers
 {
@@ -12,6 +14,7 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Contact()
         {
             return View();

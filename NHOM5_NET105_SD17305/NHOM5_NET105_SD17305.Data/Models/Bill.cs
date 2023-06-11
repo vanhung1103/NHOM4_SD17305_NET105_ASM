@@ -10,7 +10,7 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public int Id { get; set; }
         [ForeignKey("UserId")]
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         [ForeignKey("BillStatus_Id")]
         public int BillStatus_Id { get; set; }
         [ForeignKey("Payment_Type_Id")]
@@ -25,8 +25,8 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public DateTime Create_Date { get; set; }
         public DateTime Payment_date { get; set; }
         public DateTime Delivery_date { get; set; }
-        public DateTime Description { get; set; }
-        public IdentityUser User { get; set; }
+        public string Description { get; set; }
+        public User User { get; set; }
         public BillStatus BillStatus { get; set; }
         public ICollection<BillItem> BillItem { get; set; }
         public Payment_Type Payment_Type { get; set; }

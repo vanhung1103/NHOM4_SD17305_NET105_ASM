@@ -7,7 +7,7 @@ namespace NHOM5_NET105_SD17305.Data.Models
     public class Customer
     {
         [Key, ForeignKey("Users")]
-        public string UserId { get; set; } 
+        public int UserId { get; set; } 
         public string Gender { get; set; } 
         public string FirstName { get; set; } 
         public string LastName { get; set; } 
@@ -16,7 +16,7 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public string email { get; set; } 
         public string Image { get; set; } 
    
-        public IdentityUser Users { get; set; }
+        public User Users { get; set; }
         public ICollection<Address> Addresses { get;}
     }
 }

@@ -21,7 +21,7 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public int Weight { get; set; }
         public string Descriptions { get; set; }
         public string LongDescription { get; set; }
-        public IFormFile Image;
+        public string Image;
         
     }
 }
