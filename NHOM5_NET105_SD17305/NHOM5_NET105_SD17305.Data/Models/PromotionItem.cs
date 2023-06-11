@@ -8,11 +8,11 @@ namespace NHOM5_NET105_SD17305.Data.Models
         [Key]
         public int Id { get; set; }
         [ForeignKey("PromotionId")]
-        public int PromotionId { get; set; }
+        public int? PromotionId { get; set; }
         [ForeignKey("ProductId")]
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
 
-        public Promotion Promotion { get; set; }
-        public Product Product { get; set; }
+        public Promotion? Promotion { get; set; }
+        public Product? Product { get; set; }
     }
 }

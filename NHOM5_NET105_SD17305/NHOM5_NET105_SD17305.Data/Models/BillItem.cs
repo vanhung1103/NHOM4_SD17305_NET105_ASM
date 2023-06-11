@@ -18,10 +18,10 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public int Quantity { get; set; }
         public int Price { get; set; }
 
-        public Product Product { get; set; }
-        public Bill Bills { get; set; }
+        public Product? Product { get; set; }
+        public Bill? Bills { get; set; }
 
-        public Combos Combos { get; set; }
+        public Combos? Combos { get; set; }
        
     }
 }
