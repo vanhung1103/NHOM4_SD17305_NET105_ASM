@@ -20,7 +20,7 @@ builder.Services.AddDbContext<FastFoodDbContext>(options =>
 // Add Identity
 builder.Services.AddHttpClient();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<FastFoodDbContext>().AddDefaultTokenProviders();
+	.AddEntityFrameworkStores<FastFoodDbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<IExternalLoginServices, ExternalLoginServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IRoleServices, RoleServices>();
@@ -30,9 +30,14 @@ builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<IPromotionServices, Promotionservices>();
 builder.Services.AddScoped<IPromotionItemServices, PromotionItemservices>();
 builder.Services.AddScoped<IcartItemServices, CartItemServices>();
-builder.Services.AddScoped<ICartServices, CartServices>();
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<ICombosItemServices, CombosItemServices>();
+builder.Services.AddScoped<ICartServices, CartServices>();
+builder.Services.AddScoped<IBillServices, BillServices>();
+builder.Services.AddScoped<IBillStatusServices, BillStatusServices>();
+builder.Services.AddScoped<IBillItemServices, BillItemServices>();
+builder.Services.AddScoped<IPayment_TypeServices, Payment_TypeServices>();
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 builder.Services.AddHttpClient();
 // add session
 builder.Services.AddHttpContextAccessor();
