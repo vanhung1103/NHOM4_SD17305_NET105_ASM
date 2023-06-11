@@ -9,6 +9,7 @@ using NHOM5_NET105_SD17305.Data.Models;
 using NHOM5_NET105_SD17305.Data.Services;
 using NHOM5_NET105_SD17305.Data.IServices;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Session;
 
 namespace NHOM5_NET105_SD17305.Views.Controllers
 {
@@ -17,62 +18,34 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
         private readonly IExternalLoginServices _externalLoginServices;
         private readonly IUserServices _userServices;
         private readonly IProviderLoginServices _providerLoginServices;
+        private readonly IRoleServices _roleServices;
 
-        public SignInController(IExternalLoginServices externalLoginServices,IUserServices userServices,IProviderLoginServices providerLoginServices)
+        public SignInController(IExternalLoginServices externalLoginServices,IUserServices userServices,IProviderLoginServices providerLoginServices, IRoleServices roleServices)
         {
             _externalLoginServices = externalLoginServices;
             _userServices = userServices;
             _providerLoginServices = providerLoginServices;
+            _roleServices = roleServices;
         }
         public IActionResult SignIn()
         {
             return View();
         }
-        public IActionResult SigsnIn()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public async Task<IActionResult> IndexAsync(string username, string password)
+        public async Task<IActionResult> SignInAsync(string username,string password)
         {
-            if (username == "1" && password == "1")
+            var users = await _userServices.GetAllUserAsync();
+            var user = users.FirstOrDefault(c => c.Username.ToLower() == username.ToLower()&&c.Password== password) ?? null;
+            if (user!=null)
             {
-                var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, username),
-            new Claim(ClaimTypes.Role, "Admin"),
-        };
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var principal = new ClaimsPrincipal(identity);
-                var props = new AuthenticationProperties();
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
-
-                var isAuthenticated = User.Identity.IsAuthenticated;
-                if (isAuthenticated)
-                {
-                    var isAdmin = User.IsInRole("Admin");
-                    if (isAdmin)
-                    {
-                        return RedirectToAction("Contact");
-                    }
-                    else
-                    {
-                        return RedirectToAction("khac");
-                    }
-                }
-                else
-                {
-                    return RedirectToAction("Privacy");
-                }
+                HttpContext.Session.SetString("UserId", user.UserId.ToString());
             }
-
-            return View();
+            return RedirectToAction("CheckRole", "SignIn", new { Area = "" });
         }
         [HttpPost]
         public async Task<IActionResult> SignOut()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("UserId");
             return RedirectToAction("SignIn", "SignIn", new { area = "" });
         }
 
@@ -83,6 +56,26 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
                 RedirectUri = Url.Action("GoogleResponseLogin")
             });
         }
+        public async Task<IActionResult> CheckRole()
+        {
+            var getUserId = HttpContext.Session.GetString("UserId") ?? "";
+            var getRoleID = HttpContext.Session.GetString("RoleId") ?? "";
+            if (getUserId!="")
+            {
+                var user = await _userServices.GetUserByIdAsync(Convert.ToInt32(getUserId));
+                var username = user.Username;
+                HttpContext.Session.SetString("UserName", username);
+                if (getRoleID == "1")
+                {
+                   return RedirectToAction("Index","Home",new { Area = "Admin"});
+                }
+                if (getRoleID == "2")
+                {
+                    return RedirectToAction("Home", "Home",new { Area = "Customer" });
+                }
+            }
+            return RedirectToAction("Home", "Home", new { Area = "" });
+        }
         public async Task<IActionResult> GoogleResponseLogin()// trang đăng nhập google
         {
 
@@ -92,17 +85,17 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
             // 2. Nếu có thì lấy userid và login (lưu userid vào session)
             // 2.1 Nếu không có thì:
             // redirect sang trang bắt nó nhập thông tin, tạo user mới và externallogin và login (lưu userid vào session)
-
-
             var providerKey = claims?.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?.Value;
             var email = claims?.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value;
-
             var externals = await _externalLoginServices.GetAllExternalLoginAsync();
             var externalLogin = externals.FirstOrDefault(c => c.ProviderKey == providerKey);
             if (externalLogin != null)// nếu account tồn tại
             {
                 HttpContext.Session.SetString("UserId", externalLogin.UserId.ToString()); // gán userid vào session
-                return Content("login thành công tài khoản đã kết nối sẵn" + externalLogin.UserId);
+                var user = await _userServices.GetUserByIdAsync(externalLogin.UserId);
+                var role = user.RoleId;
+                HttpContext.Session.SetString("RoleId", role.ToString());
+                return RedirectToAction("CheckRole", "SignIn", new { Area = "" });
             }
             else
             {
@@ -110,6 +103,7 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
                 var user = new User();// tạo user mới
                 user.Username = email;
                 user.Password = "";
+                user.RoleId = 2;
                 await _userServices.CreateUserAsync(user);
                 var google = await _providerLoginServices.GetAllProviderLogin();
                 var googleId =  google.FirstOrDefault(c => c.ProviderName.ToLower() == "google").ProviderId;
@@ -120,9 +114,9 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
                 external.UserId = user.UserId;
                 await _externalLoginServices.CreateExternalLoginAsync(external);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString()); // gán userid vào session
-                return Content("login thành công tài khoản vừa tạo" + user.UserId);
+                HttpContext.Session.SetString("RoleId", user.RoleId.ToString()); 
+                return RedirectToAction("CheckRole", "SignIn", new { Area = "" });
             }
-
         }
         public async Task ConnectWithGoogle(int id) // kết nối google
         {
