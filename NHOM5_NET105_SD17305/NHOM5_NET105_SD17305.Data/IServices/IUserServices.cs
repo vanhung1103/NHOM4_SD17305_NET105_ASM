@@ -5,12 +5,12 @@ namespace NHOM5_NET105_SD17305.Data.IServices
 {
     public interface IUserServices
     {
-        public Task<bool> CreateUserAsync(User p, string role);
+        public Task<bool> CreateUserAsync(User p);
 
         public Task<bool> UpdateUserAsync(User p);
-        public Task<bool> DeleteUserAsync(string id);
-        public Task<IdentityUser> GetUserByIdAsync(string id);
+        public Task<bool> DeleteUserAsync(int id);
+        public Task<User> GetUserByIdAsync(int id);
 
-        public Task<List<IdentityUser>> GetAllUserAsync();
+        public Task<List<User>> GetAllUserAsync();
     }
 }

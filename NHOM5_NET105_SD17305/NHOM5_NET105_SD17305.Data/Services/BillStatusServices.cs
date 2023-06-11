@@ -17,7 +17,7 @@ namespace NHOM5_NET105_SD17305.Data.Services
         {
             try
             {
-                await _context.BillStatuses.AddAsync(p);
+                await _context.BillStatus.AddAsync(p);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -32,8 +32,8 @@ namespace NHOM5_NET105_SD17305.Data.Services
         {
             try
             {
-                var billStatus = await _context.BillStatuses.FirstOrDefaultAsync(c => c.Id == id);
-                _context.BillStatuses.Remove(billStatus);
+                var billStatus = await _context.BillStatus.FirstOrDefaultAsync(c => c.Id == id);
+                _context.BillStatus.Remove(billStatus);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -46,19 +46,19 @@ namespace NHOM5_NET105_SD17305.Data.Services
 
         public async Task<List<BillStatus>> GetAllBillStatusAsync()
         {
-            return await _context.BillStatuses.ToListAsync();
+            return await _context.BillStatus.ToListAsync();
         }
 
         public async Task<BillStatus> GetBillStatusByIdAsync(int id)
         {
-            return await _context.BillStatuses.FirstOrDefaultAsync(c => c.Id == id);
+            return await _context.BillStatus.FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> UpdateBillStatusAsync(BillStatus p)
         {
             try
             {
-                _context.BillStatuses.Update(p);
+                _context.BillStatus.Update(p);
                 await _context.SaveChangesAsync();
                 return true;
             }

@@ -27,7 +27,7 @@ namespace NHOM5_NET105_SD17305.Data.Services
             }
         }
 
-        public async Task<bool> DeleteCustomerAsync(string id)
+        public async Task<bool> DeleteCustomerAsync(int id)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace NHOM5_NET105_SD17305.Data.Services
             return await _context.Customers.ToListAsync();
         }
 
-        public async Task<Customer> GetCustomerByIdAsync(string id)
+        public async Task<Customer> GetCustomerByIdAsync(int id)
         {
             return await _context.Customers.FirstOrDefaultAsync(c => c.UserId == id);
         }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj": {}
+    "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj": {}
   },
   "projects": {
-    "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj": {
+    "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
+        "projectUniqueName": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
         "projectName": "NHOM5_NET105_SD17305.API",
-        "projectPath": "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
-        "packagesPath": "C:\\Users\\vanhu\\.nuget\\packages\\",
-        "outputPath": "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\obj\\",
+        "projectPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\NHOM5_NET105_SD17305.API.csproj",
+        "packagesPath": "C:\\Users\\Trung2701\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vanhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Trung2701\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
-                "projectPath": "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj"
+              "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
+                "projectPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj"
               }
             }
           }
@@ -108,21 +112,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
+    "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
         "projectName": "NHOM5_NET105_SD17305.Data",
-        "projectPath": "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
-        "packagesPath": "C:\\Users\\vanhu\\.nuget\\packages\\",
-        "outputPath": "D:\\hung\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\obj\\",
+        "projectPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
+        "packagesPath": "C:\\Users\\Trung2701\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vanhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Trung2701\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -201,7 +209,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

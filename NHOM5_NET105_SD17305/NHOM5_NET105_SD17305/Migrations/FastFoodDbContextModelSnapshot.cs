@@ -22,220 +22,6 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "df419f66-cfd4-4126-924f-252773ca2e15",
-                            ConcurrencyStamp = "096b90f8-bf63-4094-94b2-8ebc188d9c64",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "c66bdc60-8ac1-485e-af65-431791dbdd35",
-                            ConcurrencyStamp = "bfee4dc5-4e62-49e9-aee5-1d1daec22666",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserLogins", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("AspNetUserTokens", (string)null);
-                });
-
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Address", b =>
                 {
                     b.Property<int>("Id")
@@ -248,9 +34,8 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CustomerUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("CustomerUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("State")
                         .IsRequired()
@@ -260,9 +45,8 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -279,10 +63,10 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("BillStatusId")
+                    b.Property<int?>("BillStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BillStatus_Id")
+                    b.Property<int?>("BillStatus_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Create_Date")
@@ -291,16 +75,17 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<DateTime>("Delivery_date")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Description")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Discount")
                         .HasColumnType("real");
 
-                    b.Property<int>("Payment_TypeId")
+                    b.Property<int?>("Payment_TypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Payment_Type_Id")
+                    b.Property<int?>("Payment_Type_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Payment_date")
@@ -325,9 +110,8 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int>("TotalAmount")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -351,7 +135,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int>("Bill_Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("BillsId")
+                    b.Property<int?>("BillsId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CombosId")
@@ -391,7 +175,39 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BillStatuses");
+                    b.ToTable("BillStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Chờ thanh toán"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Chờ xác nhận"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Đang giao hàng"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Đã nhận hàng"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Hủy đơn"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Trả hàng"
+                        });
                 });
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Cart", b =>
@@ -405,9 +221,8 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int>("Description")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -430,11 +245,19 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Property<int?>("CombosId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -468,7 +291,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Combos", b =>
@@ -537,8 +360,8 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Customer", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("datetime2");
@@ -572,6 +395,33 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.ExternalLogin", b =>
+                {
+                    b.Property<int>("ExternalId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExternalId"), 1L, 1);
+
+                    b.Property<int>("ProviderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProviderKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExternalId");
+
+                    b.HasIndex("ProviderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ExternalLogin");
+                });
+
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Payment_Type", b =>
                 {
                     b.Property<int>("Id")
@@ -587,6 +437,18 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Payment_Types");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Khi nhận hàng"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Online"
+                        });
                 });
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Product", b =>
@@ -598,7 +460,6 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("Cate_Id")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Descriptions")
@@ -671,10 +532,10 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PromotionId")
+                    b.Property<int?>("PromotionId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -686,55 +547,91 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.ToTable("PromotionItems");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.ProviderLogin", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ProviderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProviderId"), 1L, 1);
+
+                    b.Property<string>("ProviderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProviderId");
+
+                    b.ToTable("ProviderLogin");
+
+                    b.HasData(
+                        new
+                        {
+                            ProviderId = 1,
+                            ProviderName = "Google"
+                        },
+                        new
+                        {
+                            ProviderId = 2,
+                            ProviderName = "Facebook"
+                        });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Role", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "User"
+                        });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.User", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Address", b =>
@@ -752,21 +649,15 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.BillStatus", "BillStatus")
                         .WithMany("Bills")
-                        .HasForeignKey("BillStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BillStatusId");
 
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Payment_Type", "Payment_Type")
                         .WithMany("bills")
-                        .HasForeignKey("Payment_TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Payment_TypeId");
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("BillStatus");
 
@@ -779,9 +670,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Bill", "Bills")
                         .WithMany("BillItem")
-                        .HasForeignKey("BillsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BillsId");
 
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Combos", "Combos")
                         .WithMany("BillItems")
@@ -800,7 +689,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Cart", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -853,7 +742,7 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Customer", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Users")
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.User", "Users")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -862,13 +751,30 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.ExternalLogin", b =>
+                {
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.ProviderLogin", "Provider")
+                        .WithMany("ExternalLogin")
+                        .HasForeignKey("ProviderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Provider");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Product", b =>
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("Cate_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Cate_Id");
 
                     b.Navigation("Category");
                 });
@@ -877,19 +783,22 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
                 {
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Product", "Product")
                         .WithMany("promotionItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("NHOM5_NET105_SD17305.Data.Models.Promotion", "Promotion")
                         .WithMany("promotionItems")
-                        .HasForeignKey("PromotionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromotionId");
 
                     b.Navigation("Product");
 
                     b.Navigation("Promotion");
+                });
+
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Role", b =>
+                {
+                    b.HasOne("NHOM5_NET105_SD17305.Data.Models.User", null)
+                        .WithMany("Role")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Bill", b =>
@@ -945,6 +854,16 @@ namespace NHOM5_NET105_SD17305.Views.Migrations
             modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.Promotion", b =>
                 {
                     b.Navigation("promotionItems");
+                });
+
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.ProviderLogin", b =>
+                {
+                    b.Navigation("ExternalLogin");
+                });
+
+            modelBuilder.Entity("NHOM5_NET105_SD17305.Data.Models.User", b =>
+                {
+                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }

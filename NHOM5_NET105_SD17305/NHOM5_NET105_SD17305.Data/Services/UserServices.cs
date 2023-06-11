@@ -11,84 +11,60 @@ namespace NHOM5_NET105_SD17305.Data.Services
 {
     public class UserServices : IUserServices
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        public UserServices(UserManager<IdentityUser> userManager)
+        private readonly FastFoodDbContext _context;
+        public UserServices(FastFoodDbContext Context)
         {
-            _userManager = userManager;
+            _context = Context;
         }
-        public async Task<bool> CreateUserAsync(User p,string role)
+        public async Task<bool> CreateUserAsync(User p)
         {
             try
             {
-                IdentityUser identityUser = new IdentityUser()
-                {
-                    Email = p.UserName.ToLower(),
-                    SecurityStamp = Guid.NewGuid().ToString()
-                };
-                var result = await _userManager.CreateAsync(identityUser, p.Password);
-                if (result.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(identityUser, role);
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-                
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-        }
-
-        public async Task<bool> DeleteUserAsync(string id)
-        {
-            try
-            {
-                var user = await _userManager.FindByIdAsync(id);
-                var result = await _userManager.DeleteAsync(user);
-                if (result.Succeeded)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                await _context.Users.AddAsync(p);
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
             {
+
                 return false;
             }
         }
 
-        public async Task<List<IdentityUser>> GetAllUserAsync()
+        public async Task<bool> DeleteUserAsync(int id)
         {
-            return await _userManager.Users.ToListAsync();
+            try
+            {
+                var payment_Type = await _context.Users.FirstOrDefaultAsync(c => c.UserId == id);
+                _context.Users.Remove(payment_Type);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
-        public async Task<IdentityUser> GetUserByIdAsync(string id)
+        public async Task<List<User>> GetAllUserAsync()
         {
-            return await _userManager.FindByIdAsync(id);
+            return await _context.Users.ToListAsync();
+        }
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(c => c.UserId == id);
+
         }
 
         public async Task<bool> UpdateUserAsync(User p)
         {
             try
             {
-                // thêm các trường khác
-                var user = await _userManager.FindByNameAsync(p.UserName);
-                if (user != null)
-                {
-                    user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
-                    await _userManager.UpdateAsync(user);
-                    return true;
-                }
-                return false;
+                _context.Users.Update(p);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception)
             {

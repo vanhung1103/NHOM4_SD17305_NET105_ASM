@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 {
@@ -14,6 +15,7 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
         {
             return View();
         }
+       
         public IActionResult Contact()
         {
             return View();

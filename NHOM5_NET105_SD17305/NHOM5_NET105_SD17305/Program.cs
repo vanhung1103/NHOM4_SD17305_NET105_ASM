@@ -1,7 +1,10 @@
-using AspNetCoreHero.ToastNotification;
+﻿using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NHOM5_NET105_SD17305.Data.Data;
 using NHOM5_NET105_SD17305.Data.IServices;
 using NHOM5_NET105_SD17305.Data.Services;
@@ -15,32 +18,49 @@ builder.Services.AddDbContext<FastFoodDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FastFood"), c => c.MigrationsAssembly("NHOM5_NET105_SD17305.Views"));
 });
 // Add Identity
+builder.Services.AddHttpClient();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<FastFoodDbContext>();
+    .AddEntityFrameworkStores<FastFoodDbContext>().AddDefaultTokenProviders();
+builder.Services.AddScoped<IExternalLoginServices, ExternalLoginServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
-builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<IRoleServices, RoleServices>();
+builder.Services.AddScoped<IProviderLoginServices, ProviderLoginServices>();
 builder.Services.AddScoped<ICombosServices, CombosServices>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<IPromotionServices, Promotionservices>();
 builder.Services.AddScoped<IPromotionItemServices, PromotionItemservices>();
-builder.Services.AddScoped<CombosServices>();
 builder.Services.AddScoped<IcartItemServices, CartItemServices>();
-builder.Services.AddScoped<CartItemServices>();
-
-
 builder.Services.AddScoped<IProductServices, ProductServices>();
-builder.Services.AddScoped<ProductServices>();
-
 builder.Services.AddScoped<ICombosItemServices, CombosItemServices>();
-builder.Services.AddScoped<CombosItemServices>();
 builder.Services.AddHttpClient();
 // add session
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromMinutes(1);
-});
-//add httpcontextaccessor
 builder.Services.AddHttpContextAccessor();
+// add session
+builder.Services.AddSession(options =>  // add session
+{
+    options.IdleTimeout = TimeSpan.FromHours(1); // 1 hour
+});
+builder.Services.AddAuthentication(options => {
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme =GoogleDefaults.AuthenticationScheme;
+})
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/SignIn/SignIn";
+        options.AccessDeniedPath = "/SignIn/AccessDenied";
+        options.Cookie.Name = "SignInCookie";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    })
+  .AddGoogle(options =>
+  {     // Đọc thông tin Authentication:Google
+      IConfigurationSection googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+      // Thiết lập ClientID và ClientSecret để truy cập API google
+      options.ClientId = googleAuthNSection["ClientId"];
+      options.ClientSecret = googleAuthNSection["ClientSecret"];
+      // Cấu hình Url callback lại từ Google (không thiết lập thì mặc định là /signin-google)
+      options.CallbackPath = "/signin-google";
+  });
+//add httpcontextaccessor
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,7 +75,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
+app.UseCookiePolicy();
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.UseEndpoints(endpoints =>
 {
@@ -65,6 +88,6 @@ app.UseEndpoints(endpoints =>
     );
     endpoints.MapControllerRoute(
    name: "default",
-    pattern: "{controller=Home}/{action=Home}/{id?}");
+    pattern: "{controller=SignIn}/{action=SignIn}/{id?}");
 });
 app.Run();

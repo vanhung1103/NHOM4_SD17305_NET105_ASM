@@ -60,10 +60,10 @@
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="widgets-wrap float-md-right">
                                 <div class="widget-header mr-3">
-                                    @Html.ActionLink("SignIn","SignIn","SignIn",null,new {@class = "btn btn-outline-success"})
+                                    @Html.ActionLink("SignIn","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-success"})
                                 </div>
                                 <div class="widget-header mr-3">
-                                    @Html.ActionLink("SignUp","SignUp","SignUp",null,new {@class = "btn btn-outline-info"})
+                                    @Html.ActionLink("SignUp","SignUp","SignUp",new {Area = ""},new {@class = "btn btn-outline-info"})
                                 </div>
                             </div> <!-- widgets-wrap.// -->
                         </div> <!-- col.// -->
@@ -83,16 +83,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="Customer" asp-controller="Product" asp-action="ShowListCombosFood">Contact</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Dropdown </a>
-                        <div class="dropdown-menu small">
-                            <nav class="row">
-                                <div class="col-md-auto">
-                                    <a class="nav-link" asp-controller="Guest" asp-action="Home">Home</a>
-                                </div>
-                            </nav> <!--  row end .// -->
-                        </div> <!--  dropdown-menu dropdown-large end.// -->
                     </li>
                 </ul>
             </nav> <!-- navbar-main  .// -->

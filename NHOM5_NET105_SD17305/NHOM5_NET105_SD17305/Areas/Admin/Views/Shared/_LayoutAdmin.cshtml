@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,11 +23,6 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="~/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 5a70330f370947a8253cfcd436927cb6a44a2b40
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> @* Sử dụng*@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> @* Sử dụng*@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> @* Sử dụng*@
@@ -42,10 +39,6 @@
 	<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
 	<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<<<<<<< HEAD
->>>>>>> 5a70330f370947a8253cfcd436927cb6a44a2b40
-=======
->>>>>>> 5a70330f370947a8253cfcd436927cb6a44a2b40
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -128,29 +121,45 @@
     </aside>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                   
+                    
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                       
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                                <i class="fa fa-user me-sm-1" aria-hidden="true"></i>
+                                <span class="d-sm-inline d-none">
+                                   
+                                  @*  @{
+                                        var username =HttpContextAccessor.HttpContext.Session.GetString("UserName");
+                                        if (username!=null)
+                                        {
+                                            <span>Hello  @username !</span>
+                                        }
+                                    }*@
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            
+                        </li>
+                        <li class="nav-item px-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0">
+                                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <ul class="navbar-nav  justify-content-end">
-                <li class="nav-item d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-                        <i class="fa fa-user me-sm-1"></i>
-                        <span class="d-sm-inline d-none">Sign In</span>
-                    </a>
-                </li>
-                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                        <div class="sidenav-toggler-inner">
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        </div>
         </nav>
         <!-- End Navbar -->
         <div class="container">
@@ -227,7 +236,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="~/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
-    @await Component.InvokeAsync("Notyf")
+    @*@await Component.InvokeAsync("Notyf")*@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 
