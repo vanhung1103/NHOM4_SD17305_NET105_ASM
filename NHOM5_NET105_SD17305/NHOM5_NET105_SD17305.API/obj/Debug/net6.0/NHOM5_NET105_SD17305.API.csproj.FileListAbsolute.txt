@@ -798,11 +798,7 @@ C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD1
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.AssemblyInfoInputs.cache
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.AssemblyInfo.cs
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.csproj.CoreCompileInputs.cache
-C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.dll
-C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\refint\NHOM5_NET105_SD17305.API.dll
-C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.pdb
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\appsettings.json
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\bin\Debug\net6.0\NHOM5_NET105_SD17305.API.staticwebassets.runtime.json
@@ -1191,5 +1187,8 @@ C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD1
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\scopedcss\bundle\NHOM5_NET105_SD17305.API.styles.css
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.csproj.CopyComplete
+C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.dll
+C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\refint\NHOM5_NET105_SD17305.API.dll
+C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.pdb
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\NHOM5_NET105_SD17305.API.genruntimeconfig.cache
 C:\Users\Trung2701\source\repos\New folder\NHOM5_NET105_SD17305\NHOM5_NET105_SD17305.API\obj\Debug\net6.0\ref\NHOM5_NET105_SD17305.API.dll

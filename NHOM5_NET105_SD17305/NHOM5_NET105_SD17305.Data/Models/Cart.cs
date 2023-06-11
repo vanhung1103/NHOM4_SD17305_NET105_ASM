@@ -10,6 +10,6 @@ namespace NHOM5_NET105_SD17305.Data.Models
         public string UserId { get; set; }
         public int Description { get; set; }
         public ICollection<CartItem> Items { get; set;}
-        public IdentityUser User { get; set; }
+        public User User { get; set; }
     }
 }

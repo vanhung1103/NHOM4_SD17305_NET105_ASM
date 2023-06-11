@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TfEaC+tjI4VvXv8kAYnEvpHwme0X04xojGILZxTbLeewX+c0/278xsfpefNVZN7172y3Zd7S4C7imooc0WaBCw==",
+  "dgSpecHash": "KzHn6VHAnIAzpODlUmKwr518LOO3G3G3+aK9bJZFRgoEgaMC/dPD+xEFvNeVdsBfYm1pVH0Fbj0E7wzz3V1azg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Trung2701\\source\\repos\\New folder\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Views.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\Trung2701\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Trung2701\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
     "C:\\Users\\Trung2701\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\Trung2701\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.16\\microsoft.aspnetcore.authentication.google.6.0.16.nupkg.sha512",
     "C:\\Users\\Trung2701\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.16\\microsoft.aspnetcore.cryptography.internal.6.0.16.nupkg.sha512",
     "C:\\Users\\Trung2701\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.16\\microsoft.aspnetcore.cryptography.keyderivation.6.0.16.nupkg.sha512",
     "C:\\Users\\Trung2701\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\2.2.0\\microsoft.aspnetcore.dataprotection.2.2.0.nupkg.sha512",

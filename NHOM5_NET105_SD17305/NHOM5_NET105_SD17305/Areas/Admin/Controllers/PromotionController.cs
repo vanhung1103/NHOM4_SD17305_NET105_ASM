@@ -22,6 +22,7 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
             _productServices = productServices;
             _promotionServices = promotionServices;
             _promotionItemServices = promotionItemServices;
+
         }
         public async Task<IActionResult> ShowListPromotionAsync()
         {

@@ -16,7 +16,7 @@ namespace NHOM5_NET105_SD17305.Data.Services
         {
             try
             {
-                await _context.Categories.AddAsync(p);
+                await _context.Category.AddAsync(p);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -31,8 +31,8 @@ namespace NHOM5_NET105_SD17305.Data.Services
         {
             try
             {
-                var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
-                _context.Categories.Remove(category);
+                var category = await _context.Category.FirstOrDefaultAsync(c => c.Id == id);
+                _context.Category.Remove(category);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -45,18 +45,18 @@ namespace NHOM5_NET105_SD17305.Data.Services
 
         public async Task<List<Category>> GetAllCategoryAsync()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Category.ToListAsync();
         }
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
-            return await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            return await _context.Category.FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> UpdateCategoryAsync(Category p)
         {
             try
             {
-                _context.Categories.Update(p);
+                _context.Category.Update(p);
                 await _context.SaveChangesAsync();
                 return true;
             }
