@@ -3024,23 +3024,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Trung2701\\.nuget\\packages\\": {},
+    "C:\\Users\\dinht\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
+      "projectUniqueName": "C:\\Users\\dinht\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
       "projectName": "NHOM5_NET105_SD17305.Data",
-      "projectPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
-      "packagesPath": "C:\\Users\\Trung2701\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trung2701\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\obj\\",
+      "projectPath": "C:\\Users\\dinht\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\NHOM5_NET105_SD17305.Data.csproj",
+      "packagesPath": "C:\\Users\\dinht\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dinht\\Source\\Repos\\NHOM5_SD17305_NET105_ASM\\NHOM5_NET105_SD17305\\NHOM5_NET105_SD17305.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Trung2701\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dinht\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3120,7 +3120,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

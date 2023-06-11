@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model NHOM5_NET105_SD17305.Data.Models.PaymentResponseModel
+
+<div class="row">
+    @if(Model.VnPayResponseCode == "00"){
+        <div class="col-12 text-center">
+            <h3>Thanh toán thành công</h3>
+        </div>
+    }else{
+        <div class="col-12 text-center">
+        <h3>Thanh toán không thành công:<a asp-area="Customer" asp-controller="Checkout" asp-action="Payments">thanh toán lại</a> </h3>
+            
+        </div>
+    }
+</div>
