@@ -21,9 +21,9 @@ namespace NHOM5_NET105_SD17305.Data.Models
             return products;
         }
         // Ghi dữ liệu từ 1 list vào session
-        public static void SetObjToSession(ISession session, string key, object values)
+        public static void SetObjToSession(ISession session, object obj, string key)
         {
-            var jsonData = JsonConvert.SerializeObject(values);
+            var jsonData = JsonConvert.SerializeObject(obj);
             session.SetString(key, jsonData);
         }
         public static bool CheckExistProduct(int id, List<Product> products)

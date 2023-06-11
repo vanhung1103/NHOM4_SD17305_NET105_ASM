@@ -31,25 +31,27 @@
                         <dt class="col-sm-3">Weight</dt>
                         <dd class="col-sm-9">@Model.Weight</dd>
                     </dl>
-
-                    <div class="form-row mt-4">
-                        <div class="form-group col-md flex-grow-0">
-                            <div class="input-group mb-3 input-spinner">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-light" type="button" id="button-minus">-</button>
-                                </div>
-                                <input type="text" class="form-control" value="1" id="quantity-input">
-                                <div class="input-group-append">
-                                    <button class="btn btn-light" type="button" id="button-plus">+</button>
+                    <form>
+                        <div class="form-row mt-4">
+                            <div class="form-group col-md flex-grow-0">
+                                <div class="input-group mb-3 input-spinner">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-light" type="button" id="button-minus">-</button>
+                                    </div>
+                                    <input type="text" class="form-control" value="@Model.Quantity" id="quantity-input">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light" type="button" id="button-plus">+</button>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="form-group col-md">
+                                <a class="btn btn-primary" asp-action="Add" asp-controller="Cart" asp-area="Customer" asp-route-id="@Model.Id">
+                                    <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="form-group col-md">
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
-                            </a>
-                        </div>
-                    </div>
+                    </form>
+                    
 
                 </article> <!-- product-info-aside .// -->
             </main> <!-- col.// -->

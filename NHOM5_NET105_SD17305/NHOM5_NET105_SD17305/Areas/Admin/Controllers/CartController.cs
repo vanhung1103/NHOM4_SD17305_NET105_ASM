@@ -19,16 +19,19 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
             _cartItemServices = cartItemServices;
         }
         [HttpGet]
-        public IActionResult GetAll()
-        {
-            List<CartItem> cartItems = HttpContext.Session.GetComplexData<List<CartItem>>("Cart") ?? new List<CartItem>();
-            CartViewModel cartViewModel = new CartViewModel()
-            {
-                CartItems = cartItems,
-                GrandTotal = cartItems.Sum(x => x.Quantity * x.Price)
-            };
-            return View(cartViewModel);
-        }
+        //public IActionResult GetAll()
+        //{
+        //    //List<CartItem> cartItems = HttpContext.Session.GetComplexData<List<CartItem>>("Cart") ?? new List<CartItem>();
+        //    //var gt = cartItems.Sum(x => x.Quantity * x.Price);
+        //    ////var gtt = gt + cartItems.Sum(x => x.CombosQuantity * x.CombosPrice);
+        //    //CartViewModel cartViewModel = new CartViewModel()
+        //    //{
+        //    //    CartItems = cartItems,
+        //    //    GrandTotal = gtt
+                
+        //    //};
+        //    //return View(cartViewModel);
+        //}
      
         public async Task<IActionResult> Add(int id)
         {
@@ -91,7 +94,7 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Clear()
         {
-                HttpContext.Session.Remove("Cart");
+            HttpContext.Session.Remove("Cart");
             return RedirectToAction("GetAll");
 
         }

@@ -1,0 +1,82 @@
+﻿@model CartViewModel
+@{
+    ViewData["Title"] = "Cart";
+
+}
+@if (@Model.CartItems.Count() > 0)
+{
+   
+    <div class="container" >
+    <table class="table" style="line-height=20px">
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Control</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        @foreach (var item in @Model.CartItems)
+        {
+               
+
+            <tr>
+                <td>@item.Image</td>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Add" asp-route-id="@item.ProductId" asp-controller="Cart">+</a>
+                    <a class="btn btn-info btn-sm" asp-action="Decrease" asp-route-id="@item.ProductId" asp-controller="Cart">-</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@item.ProductId" asp-controller="Cart">Remove</a>
+                </td>
+               
+                <td>@item.Price.ToString("C2")</td>
+                <td></td>
+
+            </tr>
+            
+           
+        }
+    </table>
+        <table class="table" style="line-height=20px">
+        <tr>
+            <th>ImageCombo</th>
+            <th>ComboName</th>
+            <th>ComboQuantity</th>
+            <th>Control</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+       @* @foreach (var item in @Model.CartItems)
+        {
+          
+            <tr>
+                <td>@item.Image</td>
+                <td>@item.CombosName</td>
+                <td>@item.CombosQuantity</td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-action="AddCombos" asp-route-id="@item.CombosId" asp-controller="Cart">+</a>
+                    <a class="btn btn-info btn-sm" asp-action="DecreaseCombo" asp-route-id="@item.CombosId" asp-controller="Cart">-</a>
+                    <a class="btn btn-danger btn-sm" asp-action="RemoveCombo" asp-route-id="@item.CombosId" asp-controller="Cart">Remove</a>
+                </td>
+                <td>@item.CombosPrice.ToString("C2")</td>
+                <td>@Model.CartItems.Where(x => x.CombosId == item.CombosId).Sum(x => x.CombosQuantity * x.CombosPrice ).ToString("C2")</td>
+
+            </tr>
+
+        }*@
+    </table>
+        
+         @*<h3> Grand Total:@(total2.ToString("C2"))</h3>*@
+   
+        <a class="btn btn-danger" asp-action="Clear"> Clear </a>
+        <a class="btn btn-primary" asp-action="CheckOut"> CheckOut </a>
+    </div>
+   
+}
+else
+{
+    <h3>Your cart is empty</h3>
+
+}
