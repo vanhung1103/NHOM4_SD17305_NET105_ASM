@@ -53,6 +53,8 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 				imageFile.CopyTo(stream); // Copy ảnh vừa dc chọn vào đúng cái stream đó
 										  // Gán lại giá trị link ảnh (lúc này đã nằm trong root cho thuộc tính description)
 				combos.Image = imageFile.FileName;
+				combos.CombosPrice = 0;
+				
 				await _comboService.CreateCombosAsync(combos);
 				_notyfService.Error("Thêm Combo thành công");
 				List<Product> product = await _productService.GetAllProductAsync();
@@ -70,6 +72,37 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 		[HttpGet]
 		public async Task<IActionResult> DetailCombos(int id)
 		{
+			//var check = await _comboItemService.GetAllCombosItemAsync();
+			//var combos = await _comboService.GetCombosByIdAsync(id);
+			//var lstComboItem = check.FindAll(c => c.CombosId == id);
+			//var priceCombo = 0;
+			//if (lstComboItem.Count != 0)
+			//{
+			//	foreach (var item in lstComboItem)
+			//	{
+			//		var productCombos = await _productService.GetProductByIdAsync(item.ProductId);
+			//		priceCombo *= productCombos.Price;
+			//	}
+			//	combos.CombosPrice = priceCombo;
+			//	await _comboService.UpdateCombosAsync(combos);
+
+			//}
+			var combo = await _comboService.GetCombosByIdAsync(id); //get combo by id để lấy số giá + số lượng
+			var gia = combo.CombosPrice;
+			var soluong = combo.Quantity;
+			var AllComboitem = await _comboItemService.GetAllCombosItemAsync(); //get all comboitem để lấy id sản phẩm
+			var lstComboItem = AllComboitem.FindAll(c => c.CombosId == id); //lấy ra list comboitem có id combo tương ứng
+			var priceCombo = 0;
+			if (lstComboItem.Count != 0)
+			{
+				foreach (var item in lstComboItem)
+				{
+					var productCombos = await _productService.GetProductByIdAsync(item.ProductId);
+					priceCombo += productCombos.Price;
+				}
+				combo.CombosPrice = priceCombo;
+				await _comboService.UpdateCombosAsync(combo);
+			}
 
 			var DetailCombo = await _comboService.GetCombosByIdAsync(id);
 			if (DetailCombo == null)
@@ -80,15 +113,20 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 
 			List<Product> allProduct = await _productService.GetAllProductAsync();
 			ViewBag.allproduct = allProduct;
+
 			List<CombosItem> combosItem = await _comboItemService.GetAllCombosItemAsync();
 			List<CombosItem> comboProduct = combosItem.FindAll(c => c.CombosId == id);
 			ViewBag.combos = comboProduct;
+
 			var comboItem = await _comboItemService.GetAllCombosItemAsync();
 			var comboProduc = comboItem.FindAll(c => c.CombosId == id);
+
 			List<Product> products = await _productService.GetAllProductAsync();
 			var productsss = products.Where(c => !comboProduc.Any(b => b.ProductId == c.Id));
 			ViewBag.productss = productsss;
+
 			_idCombo = id;
+
 			return View(DetailCombo);
 		}
 
@@ -96,6 +134,17 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 		{
 			var check = await _comboItemService.GetAllCombosItemAsync();
 			var check2 = check.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idSp);
+			var combos = await _comboService.GetCombosByIdAsync(_idCombo);
+			var product = await _productService.GetProductByIdAsync(idSp);
+			var lstComboItem = check.FindAll(c => c.CombosId == _idCombo);
+			var priceCombo = 0;
+			foreach (var item in lstComboItem)
+			{
+				var productCombos = await _productService.GetProductByIdAsync(item.ProductId);
+				priceCombo += productCombos.Price;
+			}
+			combos.CombosPrice = priceCombo;
+			await _comboService.UpdateCombosAsync(combos);
 			if (check2 != null)
 			{
 				check2.Quantity++;
@@ -109,12 +158,27 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 				addProduct.CombosId = _idCombo;
 				addProduct.ProductId = idSp;
 				await _comboItemService.CreateCombosItemAsync(addProduct);
+				var productUpdate = await _productService.GetProductByIdAsync(idSp);
+				productUpdate.Quantity -= 1;
+				await _productService.UpdateProductAsync(productUpdate);
 				return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
 			}
 		}
 
 		public async Task<ActionResult> DeleteComboidsp(int idsp)
 		{
+			var check = await _comboItemService.GetAllCombosItemAsync();
+			var combos = await _comboService.GetCombosByIdAsync(_idCombo);
+			var lstComboItem = check.FindAll(c => c.CombosId == _idCombo);
+			var priceCombo = 0;
+			foreach (var item in lstComboItem)
+			{
+				var productCombos = await _productService.GetProductByIdAsync(item.ProductId);
+				priceCombo *= productCombos.Price;
+			}
+			combos.CombosPrice = priceCombo;
+			await _comboService.UpdateCombosAsync(combos);
+
 			var combosItem = await _comboItemService.GetAllCombosItemAsync();
 			int idsps = combosItem.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp).CombosItemId;
 			await _comboItemService.DeleteCombosItemAsync(idsps);
@@ -176,7 +240,8 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 			}
 
 			_notyfService.Success("Thay đổi số lượng sản phẩm thành công");
-			return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+			return RedirectToAction("DetailCombos","Combos", new { id = _idCombo, area = "Admin" });
+			return RedirectToAction("DetailCombos","Combos", new { id = _idCombo, area = "Admin" });
 		}
 		//public async Task<ActionResult> Updatequantity(int quantity, int idsp) // Mở form
 		//{
@@ -207,9 +272,13 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 		}
         public async Task<ActionResult> DeleteProductfromCombo(int idsp) // Mở form
         {
+
             var combosItem = await _comboItemService.GetAllCombosItemAsync();
             int sp = combosItem.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp).CombosItemId;
             await _comboItemService.DeleteCombosItemAsync(sp);
+			var product = await _productService.GetProductByIdAsync(idsp);
+			product.Price += 1;
+			await _productService.UpdateProductAsync(product); // cộng lại số lượng khi xóa
             return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
         }
     }

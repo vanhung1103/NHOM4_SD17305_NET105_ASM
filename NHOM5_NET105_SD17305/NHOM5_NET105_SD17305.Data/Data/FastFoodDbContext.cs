@@ -41,7 +41,6 @@ namespace NHOM5_NET105_SD17305.Data.Data
                 new BillStatus() {Id=5, Name = "Hủy đơn" },
                 new BillStatus() {Id=6, Name = "Trả hàng" }
                 );
-
         }
         #region DbSet
         public DbSet<Product> Products { get; set; }
