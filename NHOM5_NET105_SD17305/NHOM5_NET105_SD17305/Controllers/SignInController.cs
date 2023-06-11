@@ -19,16 +19,24 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
         private readonly IUserServices _userServices;
         private readonly IProviderLoginServices _providerLoginServices;
         private readonly IRoleServices _roleServices;
-
-        public SignInController(IExternalLoginServices externalLoginServices,IUserServices userServices,IProviderLoginServices providerLoginServices, IRoleServices roleServices)
+        private readonly ICartServices _cartServices;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public SignInController(IExternalLoginServices externalLoginServices,IUserServices userServices,IProviderLoginServices providerLoginServices, IRoleServices roleServices,ICartServices cartServices)
         {
             _externalLoginServices = externalLoginServices;
             _userServices = userServices;
             _providerLoginServices = providerLoginServices;
             _roleServices = roleServices;
+            _cartServices = cartServices;
         }
         public IActionResult SignIn()
         {
+            HttpContext.Session.SetString("UserId", "");
+            HttpContext.Session.SetString("RoleId", "");
+            HttpContext.Session.SetString("UserName", "");
+            var a = HttpContext.Session.GetString("UserId");
+            var ab = HttpContext.Session.GetString("RoleId");
+            var abc = HttpContext.Session.GetString("UserName");
             return View();
         }
         [HttpPost]
@@ -39,13 +47,20 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
             if (user!=null)
             {
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                HttpContext.Session.SetString("UserName", user.Username);
+                HttpContext.Session.SetString("RoleId", user.RoleId.ToString());
+
             }
             return RedirectToAction("CheckRole", "SignIn", new { Area = "" });
         }
-        [HttpPost]
         public async Task<IActionResult> SignOut()
         {
-            HttpContext.Session.Remove("UserId");
+            HttpContext.Session.SetString("UserId", "");
+           HttpContext.Session.SetString("RoleId", "");
+           HttpContext.Session.SetString("UserName", "");
+            var a = HttpContext.Session.GetString("UserId");
+            var ab= HttpContext.Session.GetString("RoleId");
+            var abc = HttpContext.Session.GetString("UserName");
             return RedirectToAction("SignIn", "SignIn", new { area = "" });
         }
 
@@ -60,6 +75,7 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
         {
             var getUserId = HttpContext.Session.GetString("UserId") ?? "";
             var getRoleID = HttpContext.Session.GetString("RoleId") ?? "";
+            var GetUsser = HttpContext.Session.GetString("UserName") ?? "";
             if (getUserId!="")
             {
                 var user = await _userServices.GetUserByIdAsync(Convert.ToInt32(getUserId));
@@ -91,9 +107,10 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
             var externalLogin = externals.FirstOrDefault(c => c.ProviderKey == providerKey);
             if (externalLogin != null)// nếu account tồn tại
             {
-                HttpContext.Session.SetString("UserId", externalLogin.UserId.ToString()); // gán userid vào session
                 var user = await _userServices.GetUserByIdAsync(externalLogin.UserId);
                 var role = user.RoleId;
+                HttpContext.Session.SetString("UserId", externalLogin.UserId.ToString()); // gán userid vào session
+                HttpContext.Session.SetString("UserName", user.Username.ToString());
                 HttpContext.Session.SetString("RoleId", role.ToString());
                 return RedirectToAction("CheckRole", "SignIn", new { Area = "" });
             }
@@ -115,6 +132,13 @@ namespace NHOM5_NET105_SD17305.Views.Controllers
                 await _externalLoginServices.CreateExternalLoginAsync(external);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString()); // gán userid vào session
                 HttpContext.Session.SetString("RoleId", user.RoleId.ToString()); 
+                HttpContext.Session.SetString("UserName", user.Username.ToString());
+                var cart = new Cart()
+                {
+                    UserId = user.UserId,
+                    Description = 1,
+                };
+                await _cartServices.CreateCartAsync(cart);
                 return RedirectToAction("CheckRole", "SignIn", new { Area = "" });
             }
         }

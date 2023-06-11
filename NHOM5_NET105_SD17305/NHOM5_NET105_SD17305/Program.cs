@@ -30,15 +30,19 @@ builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<IPromotionServices, Promotionservices>();
 builder.Services.AddScoped<IPromotionItemServices, PromotionItemservices>();
 builder.Services.AddScoped<IcartItemServices, CartItemServices>();
+builder.Services.AddScoped<ICartServices, CartServices>();
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<ICombosItemServices, CombosItemServices>();
 builder.Services.AddHttpClient();
 // add session
 builder.Services.AddHttpContextAccessor();
 // add session
-builder.Services.AddSession(options =>  // add session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromHours(1); // 1 hour
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.IdleTimeout = TimeSpan.FromDays(1);
 });
 builder.Services.AddAuthentication(options => {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;

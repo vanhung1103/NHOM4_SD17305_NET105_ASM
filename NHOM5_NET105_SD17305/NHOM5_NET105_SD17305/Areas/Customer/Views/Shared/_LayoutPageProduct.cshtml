@@ -1,4 +1,9 @@
-﻿<!DOCTYPE HTML>
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+@{
+    var Session = HttpContextAccessor.HttpContext.Session;
+}
+<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
@@ -59,12 +64,26 @@
                         </div> <!-- col.// -->
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="widgets-wrap float-md-right">
-                                <div class="widget-header mr-3">
-                                    @Html.ActionLink("SignIn","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-success"})
-                                </div>
-                                <div class="widget-header mr-3">
-                                    @Html.ActionLink("SignUp","SignUp","SignUp",new {Area = ""},new {@class = "btn btn-outline-info"})
-                                </div>
+
+
+                                @{
+                                    var userName = Session.GetString("UserName");
+                                }
+                                @if (userName != null && userName != "")
+                                {
+                                    <p>Hello @userName</p>
+                                    <div class="widget-header mr-3">
+                                        @Html.ActionLink("SignOut","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-danger"})
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="widget-header mr-3">
+                                        @Html.ActionLink("SignIn","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-success"})
+                                        @Html.ActionLink("SignUp","SignUp","SignUp",new {Area = ""},new {@class = "btn btn-outline-info"})
+                                    </div>
+                                }
+
                             </div> <!-- widgets-wrap.// -->
                         </div> <!-- col.// -->
                     </div> <!-- row.// -->
