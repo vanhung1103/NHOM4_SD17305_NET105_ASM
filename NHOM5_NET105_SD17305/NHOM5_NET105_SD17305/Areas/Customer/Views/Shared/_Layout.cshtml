@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
@@ -59,12 +60,25 @@
                         </div> <!-- col.// -->
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="widgets-wrap float-md-right">
-                                <div class="widget-header mr-3">
-                                    @Html.ActionLink("SignIn","SignIn","SignIn",null,new {@class = "btn btn-outline-success"})
-                                </div>
-                                <div class="widget-header mr-3">
-                                    @Html.ActionLink("SignUp","SignUp","SignUp",null,new {@class = "btn btn-outline-info"})
-                                </div>
+                                
+                                
+@*                                @{
+                                    var userName = HttpContextAccessor.HttpContext.Session.GetString("UserName");
+                                }
+                                @if (userName!=null)
+                                {
+                                    <p>Hello @userName</p>
+                                    <div class="widget-header mr-3">
+                                        @Html.ActionLink("SignOut","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-danger"})
+                                    </div>
+                                }else
+                                {
+                                    <div class="widget-header mr-3">
+                                        @Html.ActionLink("SignIn","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-success"})
+                                        @Html.ActionLink("SignUp","SignUp","SignUp",new {Area = ""},new {@class = "btn btn-outline-info"})
+                                    </div>
+                                }
+                                *@
                             </div> <!-- widgets-wrap.// -->
                         </div> <!-- col.// -->
                     </div> <!-- row.// -->
@@ -76,23 +90,13 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Home">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Introduce">Giới thiệu</a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="Cart" asp-action="GetAll">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Product" asp-action="ShowListFastFood">Sản phẩm</a>
+                        <a class="nav-link" asp-controller="Product" asp-action="ShowListProduct" asp-area="Admin">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="Admin" asp-controller="Combos" asp-action="Index">Contact</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Dropdown </a>
-                        <div class="dropdown-menu small">
-                            <nav class="row">
-                                <div class="col-md-auto">
-                                    <a class="nav-link" asp-controller="Guest" asp-action="Home">Home</a>
-                                </div>
-                            </nav> <!--  row end .// -->
-                        </div> <!--  dropdown-menu dropdown-large end.// -->
                     </li>
                 </ul>
             </nav> <!-- navbar-main  .// -->

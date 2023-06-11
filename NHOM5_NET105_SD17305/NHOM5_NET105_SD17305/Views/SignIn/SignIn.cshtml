@@ -1,7 +1,6 @@
 ﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +28,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
         <div class="container">
-            @Html.ActionLink("Quay lại Home","Home","Home",null,new {@class = "text-white font-weight-bolder"})
+            @Html.ActionLink("Quay lại Home","Home","Home",new {Area = ""},new {@class = "text-white font-weight-bolder"})
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon mt-2">
@@ -106,19 +105,18 @@
                                 </div>
                                 <div class="mb-3">
                                     <div class="d-flex align-items-center mb-3">
-                                        <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" id="passwordInput">
+                                        <input type="password" name="password" name="password" class="form-control" placeholder="Password" aria-label="Password" id="passwordInput">
                                         <a><i class="fa fa-eye" id="togglePasswordBtn" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit">
-                                        submit
-                                    </button>
-                                   
+                                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">
+                                        SignIn
+                                    </button>                                  
                                 </div>
                                 <p class="text-sm mt-3 mb-0">
                                     Already have an account?
-                                    @Html.ActionLink("SignUp","SignUp","SignUp",null,new {@class = "text-dark font-weight-bolder"})
+                                    @Html.ActionLink("SignUp","SignUp","SignUp",new {Area = ""},new {@class = "text-dark font-weight-bolder"})
                                 </p>
                             </form>
                         </div>

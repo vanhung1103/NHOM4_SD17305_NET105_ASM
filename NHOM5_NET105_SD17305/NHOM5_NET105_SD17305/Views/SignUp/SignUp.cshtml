@@ -28,7 +28,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
         <div class="container">
-            @Html.ActionLink("Quay lại Home","Home","Home",null,new {@class = "text-white font-weight-bolder"})
+            @Html.ActionLink("Quay lại Home","Home","Home",new {Area = ""},new {@class = "text-white font-weight-bolder"})
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon mt-2">
@@ -99,22 +99,29 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form role="form">
+                            <form method="post">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="User Name" aria-label="Name">
-                                </div>
-                                <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                                    <input type="text" class="form-control" name="username" placeholder="User Name" aria-label="Name">
                                 </div>
                                 <div class="mb-3">
                                     <div class="d-flex align-items-center mb-3">
-                                        <input type="password" class="form-control" placeholder="Password" aria-label="Password" id="passwordInput">
+                                        <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password" id="passwordInput">
                                         <a><i class="fa fa-eye" id="togglePasswordBtn" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    @Html.ActionLink("SignUp","SignUp","SignUp",null,new {@class = "btn bg-gradient-dark w-100 my-4 mb-2"})
+                                <div class="mb-3">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <input type="password" class="form-control" name="repassword" placeholder="Password" aria-label="Password" id="passwordInput1">
+                                        <a><i class="fa fa-eye" id="togglePasswordBtn1" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
 
+                                <div class="text-center">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">
+                                            SignUp
+                                        </button>
+                                    </div>
                                 </div>
                                 <p class="text-sm mt-3 mb-0">
                                     Already have an account?
@@ -149,6 +156,8 @@
     <script>
         var passwordInput = document.getElementById('passwordInput');
         var togglePasswordBtn = document.getElementById('togglePasswordBtn');
+        var passwordInput1 = document.getElementById('passwordInput1');
+        var togglePasswordBtn1 = document.getElementById('togglePasswordBtn1');
 
         togglePasswordBtn.addEventListener('click', function () {
             if (passwordInput.type === 'password') {
@@ -161,6 +170,18 @@
                 togglePasswordBtn.classList.add('fa-eye');
             }
         });
+        togglePasswordBtn1.addEventListener('click', function () {
+            if (passwordInput1.type === 'password') {
+                passwordInput1.type = 'text';
+                togglePasswordBtn1.classList.remove('fa-eye');
+                togglePasswordBtn1.classList.add('fa-eye-slash');
+            } else {
+                passwordInput1.type = 'password';
+                togglePasswordBtn1.classList.remove('fa-eye-slash');
+                togglePasswordBtn1.classList.add('fa-eye');
+            }
+        });
+
     </script>
 </body>
 

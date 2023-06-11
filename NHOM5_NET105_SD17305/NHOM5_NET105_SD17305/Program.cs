@@ -23,6 +23,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<FastFoodDbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<IExternalLoginServices, ExternalLoginServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IRoleServices, RoleServices>();
 builder.Services.AddScoped<IProviderLoginServices, ProviderLoginServices>();
 builder.Services.AddScoped<ICombosServices, CombosServices>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
