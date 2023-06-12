@@ -80,6 +80,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW90aW9uXFNob3dMaXN0UHJvbW90aW9uSXRlbXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/QlBill/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUWxCaWxsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/QlBill/UpdateBill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUWxCaWxsXFVwZGF0ZUJpbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dinht/source/repos/NHOM5_SD17305_NET105_ASM/NHOM5_NET105_SD17305/NHOM5_NET105_SD17305/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
