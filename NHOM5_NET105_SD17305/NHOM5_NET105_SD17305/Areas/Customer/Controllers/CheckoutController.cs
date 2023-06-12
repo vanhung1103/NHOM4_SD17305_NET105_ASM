@@ -1,10 +1,12 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using NHOM5_NET105_SD17305.Data.IServices;
 using NHOM5_NET105_SD17305.Data.Models;
 using NHOM5_NET105_SD17305.Data.Services;
+using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 
 namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 {
@@ -57,8 +59,9 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 		public async Task<IActionResult> BillssAsync()
 		{
 			_UserID = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+			var billId = Convert.ToInt32(HttpContext.Session.GetString("BillId"));
 			List<Bill> billuser = await _billServices.GetAllBillAsync();
-			var bill = billuser.FirstOrDefault(c => c.UserId == _UserID && c.Id == _BillID);
+			var bill = billuser.FirstOrDefault(c => c.UserId == _UserID && c.Id == billId);//chưa lấy được _BillID
 			return View(bill);
 		}
 
@@ -115,7 +118,8 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 				Description = bill.Description
 			};
 			await _billServices.CreateBillAsync(bills);
-			_BillID = bills.Id;
+			_BillID = bills.Id; // add session được chắc
+			
 			List<BillItem> billItems = new List<BillItem>();
 			List<Product> products = await _productServices.GetAllProductAsync();
 			List<Combos> combo = await _combosServices.GetAllCombosAsync();
@@ -131,16 +135,27 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 				};
 				billItems.Add(billitem);
 
-                var product = products.FirstOrDefault(c => c.Id == item.ProductId);
-                var combos = combo.FirstOrDefault(c => c.Id == item.CombosId);
-    //            if (item.Combos.Id != null)
+
+				//            if (item.Combos.Id != null)
 				//{
 				//	 combos.
 				//}
 
 				//var product = products.FirstOrDefault(c => c.Id == item.ProductId);
 				//var combos = combo.FirstOrDefault(c => c.Id == item.CombosId);
-
+				var product = products.FirstOrDefault(c => c.Id == item.ProductId);
+				var combos = combo.FirstOrDefault(c => c.Id == item.CombosId);
+				if (item.ProductId!=null)
+				{
+					product.Quantity-=item.Quantity;
+					var a = await _productServices.UpdateProductAsync(product); //update quantity product
+				}
+				if (item.CombosId != null)
+				{
+					combos.Quantity -= item.Quantity;
+					var a = await _combosServices.UpdateCombosAsync(combos);  //update quantity combo
+				}
+				await _cartItemServices.DeleteCartItemAsync(item.Id); // delete item in cart
 
 				if(combos == null)
 				{
@@ -214,7 +229,8 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 			try
 			{
 				_UserID = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
-
+				List<Product> products = await _productServices.GetAllProductAsync();
+				List<Combos> combo = await _combosServices.GetAllCombosAsync();
 				var cart = await _cartService.GetAllCartAsync();
 				int cartID = cart.FirstOrDefault(c => c.UserId == _UserID).Id;
 
@@ -243,10 +259,10 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 					TotalAmount = total,
 					Description = "ok"
 				};
-				await _billServices.CreateBillAsync(bills);
+				await _billServices.CreateBillAsync(bills);// create bill done
+				HttpContext.Session.SetString("BillId", bills.Id.ToString());
 
-
-				ViewBag.idbill = bills.Id;
+				ViewBag.idbill = bills.Id; // có nhận được bill id
 				List<BillItem> billItems = new List<BillItem>();
 				foreach (var item in cartItems)
 				{
@@ -258,17 +274,31 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 						Quantity = item.Quantity,
 						Price = item.Price
 					};
-					billItems.Add(billitem);
+					billItems.Add(billitem); //có add được billitem
+					var product = products.FirstOrDefault(c => c.Id == item.ProductId);
+					var combos = combo.FirstOrDefault(c => c.Id == item.CombosId);
+					if (item.ProductId != null)
+					{
+						product.Quantity -= item.Quantity;
+						var a = await _productServices.UpdateProductAsync(product); //update quantity product
+					}
+					if (item.CombosId != null)
+					{
+						combos.Quantity -= item.Quantity;
+						var a = await _combosServices.UpdateCombosAsync(combos);  //update quantity combo
+					}
+					await _cartItemServices.DeleteCartItemAsync(item.Id); // delete item in cart
+
 				}
 
 
 				var billstatus = await _billStatusService.GetAllBillStatusAsync();
-				var check = billstatus.FirstOrDefault(c => c.Id == bills.BillStatus_Id);
+				var check = billstatus.FirstOrDefault(c => c.Id == bills.BillStatus_Id); // billstatus nhận id = 2
 
 				foreach (var billItem in billItems)
 				{
 					await _billItemServices.CreateBillItemAsync(billItem);
-				}
+				}// xử lí giỏ hàng luôn 
 				var url = _vnPayService.CreatePaymentUrl(model, HttpContext);
 				return Redirect(url);
 			}
@@ -285,12 +315,12 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 			var response = _vnPayService.PaymentExecute(Request.Query);
 			if (response.VnPayResponseCode == "00")
 			{
-				return RedirectToAction("Billss", "Checkout", new { area = "Customer" });
+				return RedirectToAction("Billss", "Checkout", new { area = "Customer" }); // thanh toán thành công
 			}
 			else
 			{
 
-				return RedirectToAction("Payments", "Checkout", new { area = "Customer" });
+				return RedirectToAction("Payments", "Checkout", new { area = "Customer" });// thanh toán false
 			}
 		}
 

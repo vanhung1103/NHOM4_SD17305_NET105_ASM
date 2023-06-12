@@ -104,16 +104,16 @@
 												<a>
 													<img src="https://picsum.photos/200/150" alt="Nature" style="width:100%">
 													<div class="row caption">
-														<div class="col-6">@product.ProductName</div>
-														<div class="col-6">$@product.Price</div>
+														<div class="col-6">Name: @product.ProductName</div>
+														<div class="col-6">Price: @product.Price</div>
 														<div class="col-12 d-flex align-items-center">
 															<div class="form-group mx-2">
-																<input style="width:80px" class="form-control" type="number" min="1" max="100" name="quantity" value="@item.Quantity">
+																<input style="width:80px" class="form-control" type="number" min="1" max="100" readonly name="quantity" value="@item.Quantity">
 																<input type="text" hidden name="idsp" value="@item.ProductId" />
 															</div>
 															<div class="form-group d-flex justify-content-between align-items-center">
-																<input type="submit" value="Save" formaction="@Url.Action("Updatequantity", "Combos","Admin")" formmethod="post" class="btn btn-outline-primary mr-1" />
-																@Html.ActionLink("Remove","DeleteProductfromCombo,","Combos",new{Area = "Admin",idsp= item.ProductId},new {@class="btn btn-outline-danger"})
+																<input type="submit" hidden value="Save" formaction="@Url.Action("Updatequantity", "Combos","Admin")" formmethod="post" class="btn btn-outline-primary mr-1" />
+																@Html.ActionLink("Remove","DeleteProductfromCombo","Combos",new{Area = "Admin",idsp= item.ProductId},new {@class="btn btn-outline-danger"})
 															</div>
 														</div>
 													</div>

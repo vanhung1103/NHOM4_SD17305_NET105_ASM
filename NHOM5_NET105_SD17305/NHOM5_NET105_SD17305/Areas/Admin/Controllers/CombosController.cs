@@ -70,7 +70,6 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 		[HttpGet]
 		public async Task<IActionResult> DetailCombos(int id)
 		{
-
 			var DetailCombo = await _comboService.GetCombosByIdAsync(id);
 			if (DetailCombo == null)
 			{
@@ -89,17 +88,67 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 			var productsss = products.Where(c => !comboProduc.Any(b => b.ProductId == c.Id));
 			ViewBag.productss = productsss;
 			_idCombo = id;
+			var allitem = await _comboItemService.GetAllCombosItemAsync();
+			var itemhave = allitem.FindAll(c => c.CombosId == DetailCombo.Id);
+			if (itemhave.Count != 0)
+			{
+				int totalAmount = 0;
+				foreach (var item in comboProduct)
+				{
+					var product = allProduct.FirstOrDefault(p => p.Id == item.ProductId);
+					if (product != null)
+					{
+						totalAmount += product.Price;
+					}
+				}
+
+				int discountedAmount = totalAmount - Convert.ToInt32(DetailCombo.Discount);
+				if (discountedAmount < 0)
+				{
+					discountedAmount = 0;
+				}
+
+				DetailCombo.CombosPrice = discountedAmount;
+			}
+			else
+			{
+				DetailCombo.CombosPrice = 0;
+			}
+
+			await _comboService.UpdateCombosAsync(DetailCombo);
+
 			return View(DetailCombo);
 		}
+
 
 		public async Task<ActionResult> AddProductToComboItem(int idSp)
 		{
 			var check = await _comboItemService.GetAllCombosItemAsync();
 			var check2 = check.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idSp);
+			var combos = await _comboService.GetCombosByIdAsync(_idCombo);
+			var product = await _productService.GetProductByIdAsync(idSp);
+			var lstComboItem = check.FindAll(c => c.CombosId == _idCombo);
+
+			int priceCombo = combos.CombosPrice;
+
+			foreach (var item in lstComboItem)
+			{
+				var productCombos = await _productService.GetProductByIdAsync(item.ProductId);
+				priceCombo += productCombos.Price * item.Quantity;
+			}
+
+			combos.CombosPrice = priceCombo;
+			await _comboService.UpdateCombosAsync(combos);
+
 			if (check2 != null)
 			{
 				check2.Quantity++;
 				await _comboItemService.UpdateCombosItemAsync(check2);
+
+				// Trừ số lượng sản phẩm
+				product.Quantity--;
+				await _productService.UpdateProductAsync(product);
+
 				return RedirectToAction("Index", "Combos", new { area = "Admin" });
 			}
 			else
@@ -109,17 +158,50 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 				addProduct.CombosId = _idCombo;
 				addProduct.ProductId = idSp;
 				await _comboItemService.CreateCombosItemAsync(addProduct);
+
+				// Trừ số lượng sản phẩm
+				product.Quantity--;
+				await _productService.UpdateProductAsync(product);
+
+				var comboItem = await _comboItemService.GetAllCombosItemAsync();
+				var comboProduc = comboItem.FindAll(c => c.CombosId == _idCombo);
+				int gia = 0;
+
+				foreach (var item in comboProduc)
+				{
+					var productUpdate1 = await _productService.GetProductByIdAsync(item.ProductId);
+					gia += productUpdate1.Price * item.Quantity; // tính tiền
+				}
+
+				var productToUpdate = await _productService.GetProductByIdAsync(idSp);
+				productToUpdate.Quantity--;
+				await _productService.UpdateProductAsync(productToUpdate);
+
 				return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
 			}
 		}
 
+
 		public async Task<ActionResult> DeleteComboidsp(int idsp)
 		{
+			var check = await _comboItemService.GetAllCombosItemAsync();
+			var combos = await _comboService.GetCombosByIdAsync(_idCombo);
+			var lstComboItem = check.FindAll(c => c.CombosId == _idCombo);
+			var priceCombo = 0;
+			foreach (var item in lstComboItem)
+			{
+				var productCombos = await _productService.GetProductByIdAsync(item.ProductId);
+				priceCombo *= productCombos.Price;
+			}
+			combos.CombosPrice = priceCombo;
+			await _comboService.UpdateCombosAsync(combos);
+
 			var combosItem = await _comboItemService.GetAllCombosItemAsync();
 			int idsps = combosItem.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp).CombosItemId;
 			await _comboItemService.DeleteCombosItemAsync(idsps);
 			return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
 		}
+
 
 		[HttpGet]
 		public async Task<IActionResult> UpdateCombo(int id) // Mở form, truyền luôn sang form
@@ -205,13 +287,17 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 			await _comboService.DeleteCombosAsync(id);
 			return RedirectToAction("Index", "Combos", new { area = "Admin" });
 		}
-        public async Task<ActionResult> DeleteProductfromCombo(int idsp) // Mở form
-        {
-            var combosItem = await _comboItemService.GetAllCombosItemAsync();
-            int sp = combosItem.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp).CombosItemId;
-            await _comboItemService.DeleteCombosItemAsync(sp);
-            return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
-        }
-    }
+		public async Task<ActionResult> DeleteProductfromCombo(int idsp) // Mở form
+		{
+
+			var combosItem = await _comboItemService.GetAllCombosItemAsync();
+			int sp = combosItem.FirstOrDefault(c => c.CombosId == _idCombo && c.ProductId == idsp).CombosItemId;
+			await _comboItemService.DeleteCombosItemAsync(sp);
+			var product = await _productService.GetProductByIdAsync(idsp);
+			product.Price += 1;
+			await _productService.UpdateProductAsync(product); // cộng lại số lượng khi xóa
+			return RedirectToAction("DetailCombos", "Combos", new { id = _idCombo, area = "Admin" });
+		}
+	}
 }
 
