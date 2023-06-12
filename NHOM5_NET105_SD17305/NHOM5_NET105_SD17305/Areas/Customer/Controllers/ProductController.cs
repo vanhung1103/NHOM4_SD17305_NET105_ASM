@@ -36,6 +36,8 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
             }).ToList();
 
             var products = await _productServices.GetAllProductAsync(); // get all product
+            products = products.FindAll(c => c.Quantity >= 1);
+
             if (!string.IsNullOrWhiteSpace(StrSearch))
             {
 
@@ -121,6 +123,7 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
             int PageSize = 10; // 10 items
 
             var combos = await _combosServices.GetAllCombosAsync(); // get all product
+            combos = combos.FindAll(c => c.Quantity >= 1);
             if (!string.IsNullOrWhiteSpace(StrSearch))
             {
 

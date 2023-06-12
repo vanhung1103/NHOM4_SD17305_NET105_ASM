@@ -226,8 +226,8 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 		[HttpPost]
 		public async Task<IActionResult> CreatePaymentUrl(PaymentInformationModel model, Bill bill)
 		{
-			try
-			{
+			//try
+			//{
 				_UserID = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
 				List<Product> products = await _productServices.GetAllProductAsync();
 				List<Combos> combo = await _combosServices.GetAllCombosAsync();
@@ -301,12 +301,12 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 				}// xử lí giỏ hàng luôn 
 				var url = _vnPayService.CreatePaymentUrl(model, HttpContext);
 				return Redirect(url);
-			}
-			catch (Exception ex)
-			{
-				// Xử lý lỗi tạo Bill
-				return RedirectToAction("Error", "Checkout");
-			}
+			//}
+			//catch (Exception ex)
+			//{
+			//	// Xử lý lỗi tạo Bill
+			//	return RedirectToAction("Error", "Checkout");
+			//}
 		}
 
 

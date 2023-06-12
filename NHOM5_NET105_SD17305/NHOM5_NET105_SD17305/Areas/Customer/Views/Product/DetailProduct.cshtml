@@ -31,23 +31,24 @@
                         <dt class="col-sm-3">Weight</dt>
                         <dd class="col-sm-9">@Model.Weight</dd>
                     </dl>
-                    <form>
+                    <form asp-area="Customer" asp-controller="Cart" asp-action="Add" method="post">
+                        <input type="text" name="id" value="@Model.Id" hidden/>
                         <div class="form-row mt-4">
                             <div class="form-group col-md flex-grow-0">
                                 <div class="input-group mb-3 input-spinner">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-light" type="button" id="button-minus">-</button>
                                     </div>
-                                    <input type="text" class="form-control" value="@Model.Quantity" id="quantity-input">
+                                    <input type="text" class="form-control" value="1" name="quantity" id="quantity-input">                                    
                                     <div class="input-group-append">
                                         <button class="btn btn-light" type="button" id="button-plus">+</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-md">
-                                <a class="btn btn-primary" asp-action="Add" asp-controller="Cart" asp-area="Customer" asp-route-id="@Model.Id">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </form>

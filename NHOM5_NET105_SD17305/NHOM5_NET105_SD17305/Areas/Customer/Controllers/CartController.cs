@@ -4,6 +4,7 @@ using NHOM5_NET105_SD17305.Data.IServices;
 using NHOM5_NET105_SD17305.Data.Models;
 using NHOM5_NET105_SD17305.Data.Services;
 using NHOM5_NET105_SD17305.Views.Areas.Customer.Models.ViewModel;
+using System.Net.WebSockets;
 using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 
 namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
@@ -16,26 +17,30 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
         public readonly IProductServices _productServices;
         public readonly ICombosItemServices _combosItemServices;
         public readonly ICombosServices _combosServices;
-        public CartController(FastFoodDbContext dbContext, IcartItemServices icartItemServices, IProductServices productServices, ICombosServices combosServices) { 
+        private readonly ICartServices _cartServices;
+
+        public CartController(FastFoodDbContext dbContext, IcartItemServices icartItemServices, IProductServices productServices, ICombosServices combosServices,ICartServices cartServices) { 
             _context = dbContext;
             _cartItemServices = icartItemServices;
             _productServices = productServices;
             _combosServices = combosServices;
+            _cartServices = cartServices;
         }
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            List<CartItem> cartItems = HttpContext.Session.GetComplexData<List<CartItem>>("Cart") ?? new List<CartItem>();
-            List<CartItem1> cartItems1 = HttpContext.Session.GetComplexData<List<CartItem1>>("Cart") ?? new List<CartItem1>();
-            var gt = cartItems.Sum(x => x.Quantity * x.Price);
-            var gtt = gt + cartItems1.Sum(x => x.CombosQuantity * x.CombosPrice);
-            CartViewModel cartViewModel = new CartViewModel()
+            var userId = HttpContext.Session.GetString("UserId") ?? ""; // get userid
+            var AllCart = await _cartServices.GetAllCartAsync(); // get cart
+            var myCart = AllCart.FirstOrDefault(x => x.UserId == Convert.ToInt32(userId)); // get cart by userid
+            var AllCartItems = await _cartItemServices.GetAllCartItemAsync(); // get cartitem
+            var myCartItems = AllCartItems.Where(x => x.CartId == myCart.Id); // get cartitem by cartid
+            int total = 0;
+            foreach (var item in myCartItems)
             {
-                CartItems = cartItems,
-                CartItems1 = cartItems1,
-                GrandTotal = gtt
-            };
-            return View(cartViewModel);
+                total += item.Quantity * item.Price;
+            }
+            ViewBag.Total = total;
+            return View(myCartItems);
         }
         public async Task<IActionResult> Index()
         {
@@ -60,151 +65,106 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
             //var comid = cart.FindAll();
         }
 
-        public async Task<IActionResult> Add(int id)
+        [HttpPost]
+        public async Task<IActionResult> Add(int id, int quantity)
         {
-            var pro = await _productServices.GetProductByIdAsync(id);
-            // đọc từ session danh sách sản phẩm trong giỏ hàng
-            var products = SissionServices.GetObjFromSession(HttpContext.Session, "Cart");
-
-            if (products.Count == 0)
+            if (quantity!=0||quantity!=null)
             {
-                products.Add(pro);// nếu cart rỗng thì thêm mảng vào luôn
-                                  // đưa lại dữ liệu vào sesion
-                 SissionServices.SetObjToSession(HttpContext.Session, products, "Cart");
-
-            }
-            else
-            {
-                if (SissionServices.CheckExistProduct(id, products))
+                var product = await _productServices.GetProductByIdAsync(id); // get product    
+                var userId = HttpContext.Session.GetString("UserId") ?? ""; // get userid
+                var AllCart = await _cartServices.GetAllCartAsync(); // get cart
+                var myCart = AllCart.FirstOrDefault(x => x.UserId == Convert.ToInt32(userId)); // get cart by userid
+                var AllCartItems = await _cartItemServices.GetAllCartItemAsync(); // get cartitem
+                var myCartItems = AllCartItems.Where(x => x.CartId == myCart.Id); // get cartitem by cartid
+                var myCartItem = myCartItems.FirstOrDefault(x => x.ProductId == product.Id); // get cartitem by productid
+                if (myCartItem == null)
                 {
-                    var pros = products.Find(p => p.Id == id);
-                    pro.Quantity++;
-                    SissionServices.SetObjToSession(HttpContext.Session, products, "Cart");
-
-
+                    var cart = new CartItem()
+                    {
+                        CartId = myCart.Id,
+                        ProductId = product.Id,
+                        Quantity = quantity,
+                        Price = product.Price,
+                        Image = product.Image,
+                        ProductName = product.ProductName
+                    };
+                    await _cartItemServices.CreateCartItemAsync(cart);
                 }
                 else
                 {
-                    products.Add(pro);// nếu cart rỗng thì thêm mảng vào luôn
-                                      // đưa lại dữ liệu vào sesion
-                    SissionServices.SetObjToSession(HttpContext.Session, products, "Cart");
-
-
+                    var cartupdate = await _cartItemServices.GetCartItemByIdAsync(myCartItem.Id);
+                    cartupdate.Quantity += quantity;
+                    await _cartItemServices.UpdateCartItemAsync(myCartItem);
                 }
             }
-            //var pro = await _productServices.GetProductByIdAsync(id);
-            //if (pro == null)
-            //{
-            //    CartItem cart1 = new CartItem()
-            //    {
-            //        ProductId = pro.Id,
-            //        ProductName = pro.ProductName,
-            //        Quantity = pro.Quantity,
-            //        Price = pro.Price,
-            //        Image = pro.Image,
-            //        CartId = 3,
-            //        CombosId = 1
-            //    };
-            //    _cartItemServices.CreateCartItemAsync(cart1);
-            //}
-            //else
-            //{
-            //    pro.Quantity++;
-            //}
+            return RedirectToAction("GetAll");
+        }
+        public async Task<IActionResult> AddCombos(int id, int quantity)
+        {
+            if (quantity != 0 || quantity != null)
+            {
+                var combo = await _combosServices.GetCombosByIdAsync(id); // get combo   
+                var userId = HttpContext.Session.GetString("UserId") ?? ""; // get userid
+                var AllCart = await _cartServices.GetAllCartAsync(); // get cart
+                var myCart = AllCart.FirstOrDefault(x => x.UserId == Convert.ToInt32(userId)); // get cart by userid
+                var AllCartItems = await _cartItemServices.GetAllCartItemAsync(); // get cartitem
+                var myCartItems = AllCartItems.Where(x => x.CartId == myCart.Id); // get cartitem by cartid
+                var myCartItem = myCartItems.FirstOrDefault(x => x.CombosId == combo.Id); // get cartitem by productid
+                if (myCartItem == null)
+                {
+                    var cart = new CartItem()
+                    {
+                        CartId = myCart.Id,
+                        CombosId = combo.Id,
+                        Quantity = quantity,
+                        Price = combo.CombosPrice,
+                        Image = combo.Image,
+                        ProductName = combo.CombosName
+                    };
+                    await _cartItemServices.CreateCartItemAsync(cart);
+                }
+                else
+                {
+                    var cartupdate = await _cartItemServices.GetCartItemByIdAsync(myCartItem.Id);
+                    cartupdate.Quantity += quantity;
+                    await _cartItemServices.UpdateCartItemAsync(myCartItem);
+                }
+            }
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> minus(int id)
+        {
+
+            var product = await _productServices.GetProductByIdAsync(id); // get product    
+            var combos = await _combosItemServices.GetCombosItemByIdAsync(id); // get product    
+            var userId = HttpContext.Session.GetString("UserId") ?? ""; // get userid
+            var AllCart = await _cartServices.GetAllCartAsync(); // get cart
+            var myCart = AllCart.FirstOrDefault(x => x.UserId == Convert.ToInt32(userId)); // get cart by userid
+            var AllCartItems = await _cartItemServices.GetAllCartItemAsync(); // get cartitem
+            var myCartItems = AllCartItems.Where(x => x.CartId == myCart.Id); // get cartitem by cartid
+            var myCartItem = myCartItems.FirstOrDefault(x => x.ProductId == product.Id || x.ProductId == combos.CombosId); // get cartitem by productid
+            if (myCartItem.Quantity > 1)
+            {
+                --myCartItem.Quantity;
+                _cartItemServices.UpdateCartItemAsync(myCartItem);
+            }
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> plus(int id)
+        {
             
-            //List<CartItem> cart = HttpContext.Session.GetComplexData<List<CartItem>>("Cart") ?? new List<CartItem>();
-            //CartItem cartItem = cart.Where(p => p.ProductId == id).FirstOrDefault();
-            //if (cartItem == null)
-            //{
-
-            //    cart.Add(new CartItem(pro)) ;
-            //}
-            //else
-            //{
-            //    cartItem.Quantity++;
-            //}
-            //HttpContext.Session.SetComplexData("Cart", cart);
-            return RedirectToAction("Index");
-        }
-
-
-        public async Task<IActionResult> AddCombos(int id)
-        {
-            //if (combo == null)
-            //{
-            //    CartItem cart1 = new CartItem()
-            //    {
-            //        ProductId= 2,
-            //        ProductName = combo.CombosName,
-            //        Quantity = combo.Quantity,
-            //        Price = combo.CombosPrice,
-            //        Image = combo.Image,
-            //        CartId = 3,
-            //        CombosId = combo.Id
-            //    };
-            //    _cartItemServices.CreateCartItemAsync(cart1);
-            //}
-            //else
-            //{
-            //    combo.Quantity++;
-            //}
-            var combo = await _combosServices.GetCombosByIdAsync(id);
-
-            var combos = SessionCombo.GetObjFromSession(HttpContext.Session, "Cart1");
-
-            if (combos.Count == 0)
+            var product = await _productServices.GetProductByIdAsync(id); // get product    
+            var combos = await _combosItemServices.GetCombosItemByIdAsync(id); // get product    
+            var userId = HttpContext.Session.GetString("UserId") ?? ""; // get userid
+            var AllCart = await _cartServices.GetAllCartAsync(); // get cart
+            var myCart = AllCart.FirstOrDefault(x => x.UserId == Convert.ToInt32(userId)); // get cart by userid
+            var AllCartItems = await _cartItemServices.GetAllCartItemAsync(); // get cartitem
+            var myCartItems = AllCartItems.Where(x => x.CartId == myCart.Id); // get cartitem by cartid
+            var myCartItem = myCartItems.FirstOrDefault(x => x.ProductId == product.Id||  x.ProductId == combos.CombosId); // get cartitem by productid
+            if (product.Quantity > 1||combos.Quantity>1)
             {
-
-                combos.Add(combo);// nếu cart rỗng thì thêm mảng vào luôn
-                                  // đưa lại dữ liệu vào sesion
-                SessionCombo.SetObjToSession(HttpContext.Session, combos, "Cart1");
-
-            }
-            else
-            {
-                if (SessionCombo.CheckExistProduct(id, combos))
-                {
-                    var cb = combos.Find(p => p.Id == id);
-                    cb.Quantity++;
-                    SessionCombo.SetObjToSession(HttpContext.Session, combos, "Cart1");
-
-
-                }
-                else
-                {
-                    combos.Add(combo);// nếu cart rỗng thì thêm mảng vào luôn
-                                      // đưa lại dữ liệu vào sesion
-                    SessionCombo.SetObjToSession(HttpContext.Session, combos, "Cart1");
-
-
-                }
-            }
-            //var pro = await _p
-            return RedirectToAction("Index");
-        }
-        public async Task<IActionResult> Decrease(int id)
-        {
-            var pro = await _context.Products.FindAsync(id);
-
-            var products = SissionServices.GetObjFromSession(HttpContext.Session, "Cart");
-
-            var cartItem = products.Where(p => p.Id == id).FirstOrDefault();
-            if (cartItem.Quantity > 1)
-            {
-                --cartItem.Quantity;
-            }
-            else
-            {
-                products.RemoveAll( p => p.Id == id);
-            }
-            if (products.Count == 0)
-            {
-                HttpContext.Session.Remove("Cart");
-            }
-            else
-            {
-                SissionServices.SetObjToSession(HttpContext.Session, products, "Cart");
-
+                myCartItem.Quantity++;
+                _cartItemServices.UpdateCartItemAsync(myCartItem);
             }
             return RedirectToAction("Index");
         }
@@ -236,23 +196,8 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
         }
         public async Task<IActionResult> Remove(int id)
         {
-            var pro = await _context.Products.FindAsync(id);
-
-            var products = SissionServices.GetObjFromSession(HttpContext.Session, "Cart");
-
-            products.RemoveAll(p => p.Id == id);
-
-            if (products.Count == 0)
-            {
-                HttpContext.Session.Remove("Cart");
-
-            }
-            else
-            {
-                SissionServices.SetObjToSession(HttpContext.Session, products, "Cart");
-
-            }
-            return RedirectToAction("Index");
+            var vc = await _cartItemServices.DeleteCartItemAsync(id);
+            return RedirectToAction("GetAll");
         }
         public async Task<IActionResult> RemoveCombo(int id)
         {
@@ -300,6 +245,6 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
             return RedirectToAction("Index");
 
         }
-
+     
     }
 }

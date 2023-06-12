@@ -73,34 +73,31 @@
                             </tbody>
                         </table>
                     </div>
-                    <p>
-                        @Model.Description
-                    </p>
                     <div class="form-row mt-4">
                         <div class="form-group col-md flex-grow-0">
-                            <div class="input-group mb-3 input-spinner">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-light" type="button" id="button-minus">-</button>
+                            <form asp-area="Customer" asp-controller="Cart" asp-action="AddCombos" method="post">
+                                <input type="text" name="id" value="@Model.Id" hidden />
+                                <div class="form-row mt-4">
+                                    <div class="form-group col-md flex-grow-0">
+                                        <div class="input-group mb-3 input-spinner">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-light" type="button" id="button-minus">-</button>
+                                            </div>
+                                            <input type="text" class="form-control" value="1" name="quantity" id="quantity-input">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-light" type="button" id="button-plus">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <form asp-area="Customer" asp-controller="Cart" asp-action="UpdateCart" method="post">
-
-                                    <input type="hidden" name="id" value="@Model.Id" class="form-control" />
-
-                                    <input type="text" class="form-control text-center" value="@Model.Quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" name="quantity">
-
-
-                                    <button type="submit" class="btn btn-primary btn-sm mt-4" value="UpdateCart"> Cập nhật</button>
-                                </form>
-                                <div class="input-group-append">
-                                    <button class="btn btn-light" type="button" id="button-plus">+</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
-                        <div class="form-group col-md">
-                            <a class="btn btn-primary" asp-area="Customer" asp-controller="Cart" asp-action="AddCombos" asp-route-id="@Model.Id">
-                                <i class="fas fa-shopping-cart"  ></i> <span class="text">Add to cart</span>
-                            </a>
-                        </div>
+                        
                     </div>
 
                 </article> <!-- product-info-aside .// -->
@@ -123,7 +120,8 @@
                     @Model.Description
                 </p>
                 <h5 class="title-description">Long Description</h5>
-                @Model.LongDescription
+                
+                @Html.Raw(@Model.LongDescription)
             </div> <!-- col.// -->
         </div> <!-- row.// -->
 

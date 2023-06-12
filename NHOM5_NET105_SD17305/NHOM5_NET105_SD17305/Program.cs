@@ -24,6 +24,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddScoped<IExternalLoginServices, ExternalLoginServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IRoleServices, RoleServices>();
+builder.Services.AddScoped<ICartServices, CartServices>();
 builder.Services.AddScoped<IProviderLoginServices, ProviderLoginServices>();
 builder.Services.AddScoped<ICombosServices, CombosServices>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
@@ -58,7 +59,7 @@ builder.Services.AddAuthentication(options => {
         options.LoginPath = "/SignIn/SignIn";
         options.AccessDeniedPath = "/SignIn/AccessDenied";
         options.Cookie.Name = "SignInCookie";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.ExpireTimeSpan = TimeSpan.FromDays(1);
     })
   .AddGoogle(options =>
   {     // Đọc thông tin Authentication:Google
