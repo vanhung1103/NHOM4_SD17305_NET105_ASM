@@ -79,25 +79,26 @@
                         </div> <!-- col.// -->
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="widgets-wrap float-md-right">
-                                
-                                
+
                                 @{
                                     var userName = Session.GetString("UserName");
                                 }
-                                @if (userName != null && userName!="")
+                                @if (userName != null && userName != "")
                                 {
                                     <p>Hello @userName</p>
                                     <div class="widget-header mr-3">
                                         @Html.ActionLink("SignOut","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-danger"})
+                                        @Html.ActionLink("Cart","GetAll","Cart",new {Area = "Customer"},new {@class = "btn btn-outline-info"})
                                     </div>
-                                }else
+                                }
+                                else
                                 {
                                     <div class="widget-header mr-3">
                                         @Html.ActionLink("SignIn","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-success"})
                                         @Html.ActionLink("SignUp","SignUp","SignUp",new {Area = ""},new {@class = "btn btn-outline-info"})
                                     </div>
                                 }
-                                
+
                             </div> <!-- widgets-wrap.// -->
                         </div> <!-- col.// -->
                     </div> <!-- row.// -->
@@ -105,18 +106,20 @@
             </section> <!-- header-main .// -->
             <nav class="navbar navbar-main navbar-expand pl-0">
                 <ul class="navbar-nav flex-wrap">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Home">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Cart" asp-action="GetAll">Giới thiệu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Product" asp-action="ShowListProduct" asp-area="Admin">Sản phẩm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Combos" asp-action="Index">Contact</a>
-                    </li>
+                    <ul class="navbar-nav flex-wrap">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Home">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Introduct">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Product" asp-action="ShowListFastFood">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                    </ul>
                 </ul>
             </nav> <!-- navbar-main  .// -->
 

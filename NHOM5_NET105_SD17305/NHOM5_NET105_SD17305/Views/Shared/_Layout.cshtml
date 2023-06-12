@@ -73,16 +73,16 @@
             <nav class="navbar navbar-main navbar-expand pl-0">
                 <ul class="navbar-nav flex-wrap">
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Home">Trang chủ</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Home">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">Giới thiệu</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Introduce">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Product" asp-action="ShowListFastFood" asp-area="Customer">Sản phẩm</a>
+                        <a class="nav-link" asp-area="" asp-controller="Product" asp-action="ShowListFastFood">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Customer" asp-controller="Product" asp-action="ShowListCombosFood">Contact</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                     </li>
                 </ul>
             </nav> <!-- navbar-main  .// -->

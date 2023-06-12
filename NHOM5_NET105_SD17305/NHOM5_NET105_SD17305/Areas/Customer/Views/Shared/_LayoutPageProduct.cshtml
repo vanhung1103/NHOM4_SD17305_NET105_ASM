@@ -74,6 +74,7 @@
                                     <p>Hello @userName</p>
                                     <div class="widget-header mr-3">
                                         @Html.ActionLink("SignOut","SignIn","SignIn",new {Area = ""},new {@class = "btn btn-outline-danger"})
+                                        @Html.ActionLink("Cart","GetAll","Cart",new {Area = "Customer"},new {@class = "btn btn-outline-info"})
                                     </div>
                                 }
                                 else
@@ -92,16 +93,16 @@
             <nav class="navbar navbar-main navbar-expand pl-0">
                 <ul class="navbar-nav flex-wrap">
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Home">Trang chủ</a>
+                        <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Home">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Cart" asp-action="GetAll">Giới thiệu</a>
+                        <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Introduce">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Product" asp-action="ShowListProduct" asp-area="Admin">Sản phẩm</a>
+                        <a class="nav-link" asp-area="Customer" asp-controller="Product" asp-action="ShowListFastFood">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Combos" asp-action="Index">Contact</a>
+                        <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Contact">Contact</a>
                     </li>
                 </ul>
             </nav> <!-- navbar-main  .// -->
