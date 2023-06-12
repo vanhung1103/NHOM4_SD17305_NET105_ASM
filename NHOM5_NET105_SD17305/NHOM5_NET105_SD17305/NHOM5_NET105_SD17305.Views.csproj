@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\Views\ProfileAdmin\IndexAdmin.cshtml" />
     <None Include="Areas\Customer\Views\Checkout\Billss.cshtml" />
     <None Include="Areas\Customer\Views\Checkout\Index.cshtml" />
     <None Include="Areas\Customer\Views\Checkout\PaymentCallback.cshtml" />
     <None Include="Areas\Customer\Views\Checkout\PaymentOff.cshtml" />
     <None Include="Areas\Customer\Views\Checkout\Payments.cshtml" />
+    <None Include="Areas\Customer\Views\Profile\Index.cshtml" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
