@@ -38,6 +38,8 @@ builder.Services.AddScoped<IBillServices, BillServices>();
 builder.Services.AddScoped<IBillStatusServices, BillStatusServices>();
 builder.Services.AddScoped<IBillItemServices, BillItemServices>();
 builder.Services.AddScoped<IPayment_TypeServices, Payment_TypeServices>();
+builder.Services.AddScoped<ICustomerServices, CustomerServices>();
+builder.Services.AddScoped<IAddressServices, AddressServices>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();
 builder.Services.AddHttpClient();
 // add session

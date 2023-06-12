@@ -1,0 +1,36 @@
+﻿@model NHOM5_NET105_SD17305.Data.Models.Customer // Đảm bảo rằng "User" là tên của lớp mô hình dữ liệu của bạn
+
+<div class="row">
+	<div class="col-12">  <h1 style="text-align:center">User Information</h1></div>
+
+	<div class="col-3">
+		<img src="@Model.Image" alt="User Image" width="250px" height="250px" style=" border-radius:50%" />
+	</div>
+	<div class="col-9">
+
+		<div style="margin-top:30px">
+			<h5>User ID:@Model.UserId</h5>
+		</div>
+		<div>
+
+			<h5>Gender:@Model.Gender</h5>
+		</div>
+		<div>
+
+			<h5>Name:@Model.FirstName@Model.LastName</h5>
+		</div>
+		<div>
+
+			<h5>Date of Birth:@Model.Dob.ToString("yyyy-MM-dd")</h5>
+		</div>
+		<div>
+
+			<h5>Phone:@Model.Phone</h5>
+		</div>
+		<div>
+
+			<h5>Email:@Model.email</h5>
+		</div>
+	</div>
+	<a></a>
+</div>

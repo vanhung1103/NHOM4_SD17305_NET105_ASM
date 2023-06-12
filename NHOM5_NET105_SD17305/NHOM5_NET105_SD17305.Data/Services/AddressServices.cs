@@ -1,10 +1,11 @@
 ﻿    using Microsoft.EntityFrameworkCore;
 using NHOM5_NET105_SD17305.Data.Data;
+using NHOM5_NET105_SD17305.Data.IServices;
 using NHOM5_NET105_SD17305.Data.Models;
 
 namespace NHOM5_NET105_SD17305.Data.Services
 {
-    public class AddressServices
+    public class AddressServices:IAddressServices
     {
 
         private readonly FastFoodDbContext _context;
