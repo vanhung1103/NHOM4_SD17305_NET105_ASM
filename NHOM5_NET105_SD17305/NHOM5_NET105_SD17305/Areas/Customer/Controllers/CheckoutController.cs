@@ -155,40 +155,7 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Customer.Controllers
 					combos.Quantity -= item.Quantity;
 					var a = await _combosServices.UpdateCombosAsync(combos);  //update quantity combo
 				}
-				await _cartItemServices.DeleteCartItemAsync(item.Id); // delete item in cart
-
-				if(combos == null)
-				{
-					
-					if (product.Quantity < billitem.Quantity)
-					{
-						_notyfService.Error("So luong san pham khong du");
-						return RedirectToAction("GetAll", "Cart", new { area = "Customer" });
-					}
-
-
-				}
-				else
-				{
-                    product.Quantity -= billitem.Quantity;
-                    await _productServices.UpdateProductAsync(product);
-                }
-
-				if(product == null)
-				{
-					if (combos.Quantity < item.Quantity)
-					{
-                        
-                        _notyfService.Error("So luong com bo khong du");
-						return RedirectToAction("GetAll", "Cart", new { area = "Customer" });
-					}
-					
-				}
-                else
-                {
-                    combos.Quantity -= billitem.Quantity;
-                    await _combosServices.UpdateCombosAsync(combos);
-                }
+				await _cartItemServices.DeleteCartItemAsync(item.Id); // delete item in car
 
             }
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NHOM5_NET105_SD17305.Data.IServices;
 using NHOM5_NET105_SD17305.Data.Models;
 using NHOM5_NET105_SD17305.Data.Services;
+using System.Net.WebSockets;
 
 namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
 {
@@ -16,12 +17,29 @@ namespace NHOM5_NET105_SD17305.Views.Areas.Admin.Controllers
             _billService = billServices;
             _notyfService = notyfService;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int status)
         {
+           
             var a = await _billService.GetAllBillAsync();
-            return View(a);
+            var b = a.FindAll(c => c.BillStatus_Id == status);
+            return View(b);
         }
-        [HttpGet]
+		public async Task<IActionResult> UpdateStatus(int status, int idbill)
+		{
+			var bill = await _billService.GetBillByIdAsync(idbill);
+			if (bill == null)
+			{
+				return NotFound(); // Handle the case when the bill with the given id is not found
+			}
+
+			bill.BillStatus_Id = status;
+			await _billService.UpdateBillAsync(bill);
+
+			return RedirectToAction("Index");
+		}
+
+
+		[HttpGet]
         public async Task<IActionResult> UpdateBill(int id) // Mở form, truyền luôn sang form
         {
             var role = await _billService.GetBillByIdAsync(id);
